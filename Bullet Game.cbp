@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Bullet Game" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin\Debug\Bullet Game" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj\Debug\" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="C:\SDL-1.2.14\include" />
+					<Add directory="..\bullet Physics Original Downloaded Files\bullet-2.81-rev2613\Demos\OpenGL" />
+				</Compiler>
+				<Linker>
+					<Add option="-lglut32" />
+					<Add library="..\Bullet Physics Vehicle\glut32.lib" />
+					<Add library="..\Bullet Physics Vehicle\libBullet Physics Engine.a" />
+					<Add directory="C:\SDL-1.2.14\lib" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin\Release\Bullet Game" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj\Release\" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Linker>
+			<Add option="-lmingw32" />
+			<Add option="-lSDLmain" />
+			<Add option="-lSDL" />
+			<Add library="C:\SDL-1.2.14\lib\libSDL.dll.a" />
+			<Add library="C:\SDL-1.2.14\lib\libSDLmain.a" />
+			<Add library="C:\Program Files (x86)\CodeBlocks\MinGW\lib\libmingw32.a" />
+		</Linker>
+		<Unit filename="DemoApplication.cpp" />
+		<Unit filename="DemoApplication.h" />
+		<Unit filename="GLDebugDrawer.cpp" />
+		<Unit filename="GLDebugDrawer.h" />
+		<Unit filename="GLDebugFont.cpp" />
+		<Unit filename="GLDebugFont.h" />
+		<Unit filename="GL_ShapeDrawer.cpp" />
+		<Unit filename="GL_ShapeDrawer.h" />
+		<Unit filename="GlutDemoApplication.cpp" />
+		<Unit filename="GlutDemoApplication.h" />
+		<Unit filename="GlutStuff.cpp" />
+		<Unit filename="GlutStuff.h" />
+		<Unit filename="Player.cpp" />
+		<Unit filename="Player.h" />
+		<Unit filename="camera.cpp" />
+		<Unit filename="camera.h" />
+		<Unit filename="collision.cpp" />
+		<Unit filename="collision.h" />
+		<Unit filename="collisionplane.cpp" />
+		<Unit filename="collisionplane.h" />
+		<Unit filename="collisionsphere.cpp" />
+		<Unit filename="collisionsphere.h" />
+		<Unit filename="functions.cpp" />
+		<Unit filename="functions.h" />
+		<Unit filename="level.cpp" />
+		<Unit filename="level.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="main.h" />
+		<Unit filename="objloader.cpp" />
+		<Unit filename="objloader.h" />
+		<Unit filename="vector3d.cpp" />
+		<Unit filename="vector3d.h" />
+		<Unit filename="weapon.cpp" />
+		<Unit filename="weapon.h" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

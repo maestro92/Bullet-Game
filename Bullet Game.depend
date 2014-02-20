@@ -1,0 +1,483 @@
+# depslib dependency file v1.0
+1391939246 source:d:\martin\programming\c and c++\bullet game\vector3d.cpp
+	"vector3d.h"
+
+1391939209 d:\martin\programming\c and c++\bullet game\vector3d.h
+	<iostream>
+	<cmath>
+
+1391946193 source:d:\martin\programming\c and c++\bullet game\camera.cpp
+	"camera.h"
+
+1391939186 d:\martin\programming\c and c++\bullet game\camera.h
+	<cmath>
+	<iostream>
+	<SDL/SDL.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	"vector3d.h"
+
+1255800449 c:\sdl-1.2.14\include\sdl\sdl.h
+	"SDL_main.h"
+	"SDL_stdinc.h"
+	"SDL_audio.h"
+	"SDL_cdrom.h"
+	"SDL_cpuinfo.h"
+	"SDL_endian.h"
+	"SDL_error.h"
+	"SDL_events.h"
+	"SDL_loadso.h"
+	"SDL_mutex.h"
+	"SDL_rwops.h"
+	"SDL_thread.h"
+	"SDL_timer.h"
+	"SDL_video.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\sdl-1.2.14\include\sdl\sdl_main.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\sdl-1.2.14\include\sdl\sdl_stdinc.h
+	"SDL_config.h"
+	<sys/types.h>
+	<stdio.h>
+	<stdlib.h>
+	<stddef.h>
+	<stdarg.h>
+	<stdlib.h>
+	<malloc.h>
+	<stddef.h>
+	<stdarg.h>
+	<memory.h>
+	<string.h>
+	<strings.h>
+	<inttypes.h>
+	<stdint.h>
+	<ctype.h>
+	<iconv.h>
+	"begin_code.h"
+	<alloca.h>
+	<malloc.h>
+	<malloc.h>
+	<malloc.h>
+	<stdlib.h>
+	"close_code.h"
+
+1255800464 c:\sdl-1.2.14\include\sdl\sdl_config.h
+	"SDL_platform.h"
+	<stdarg.h>
+
+1255800450 c:\sdl-1.2.14\include\sdl\sdl_platform.h
+
+1255800450 c:\sdl-1.2.14\include\sdl\begin_code.h
+
+1255800450 c:\sdl-1.2.14\include\sdl\close_code.h
+
+1255800449 c:\sdl-1.2.14\include\sdl\sdl_audio.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_endian.h"
+	"SDL_mutex.h"
+	"SDL_thread.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800449 c:\sdl-1.2.14\include\sdl\sdl_error.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800449 c:\sdl-1.2.14\include\sdl\sdl_endian.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\sdl-1.2.14\include\sdl\sdl_mutex.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\sdl-1.2.14\include\sdl\sdl_thread.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_mutex.h"
+	"begin_code.h"
+	<process.h>
+	"close_code.h"
+
+1255800450 c:\sdl-1.2.14\include\sdl\sdl_rwops.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800449 c:\sdl-1.2.14\include\sdl\sdl_cdrom.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800449 c:\sdl-1.2.14\include\sdl\sdl_cpuinfo.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800449 c:\sdl-1.2.14\include\sdl\sdl_events.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_active.h"
+	"SDL_keyboard.h"
+	"SDL_mouse.h"
+	"SDL_joystick.h"
+	"SDL_quit.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800449 c:\sdl-1.2.14\include\sdl\sdl_active.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800449 c:\sdl-1.2.14\include\sdl\sdl_keyboard.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_keysym.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\sdl-1.2.14\include\sdl\sdl_keysym.h
+
+1255800450 c:\sdl-1.2.14\include\sdl\sdl_mouse.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\sdl-1.2.14\include\sdl\sdl_video.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800449 c:\sdl-1.2.14\include\sdl\sdl_joystick.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\sdl-1.2.14\include\sdl\sdl_quit.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+
+1255800450 c:\sdl-1.2.14\include\sdl\sdl_loadso.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\sdl-1.2.14\include\sdl\sdl_timer.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\sdl-1.2.14\include\sdl\sdl_version.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1392937741 source:d:\martin\programming\c and c++\bullet game\main.cpp
+	"main.h"
+	"DemoApplication.h"
+	"GLDebugDrawer.h"
+	<stdio.h>
+	"GL_ShapeDrawer.h"
+	"GlutStuff.h"
+
+1391936783 d:\martin\programming\c and c++\bullet game\gl_functions.h
+	<cstdlib>
+	<vector>
+	<iostream>
+	<sstream>
+	<string>
+	<algorithm>
+	<fstream>
+	<cstdio>
+	<GL/glew.h>
+	"gl/gl.h"
+	"gl/glu.h"
+	"gl/glext.h"
+	"SDL\SDL.h"
+	"SDL\SDL_image.h"
+	"objloader.h"
+	"text.h"
+
+1391486528 d:\martin\programming\c and c++\bullet game\objloader.h
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<cstdlib>
+	<vector>
+	<string>
+	<algorithm>
+	<fstream>
+	<cstdio>
+	<iostream>
+	<cmath>
+	<map>
+	"collisionplane.h"
+
+1391496538 d:\martin\programming\c and c++\bullet game\collisionplane.h
+	<iostream>
+	"vector3d.h"
+
+1391095797 d:\martin\programming\c and c++\bullet game\text.h
+	<cstring>
+	<vector>
+	"objloader.h"
+
+1391941986 d:\martin\programming\c and c++\bullet game\functions.h
+	<GL/glew.h>
+	"SDL/SDL_opengl.h"
+	"gl/gl.h"
+	"gl/glu.h"
+	"gl/glext.h"
+	<SDL/SDL.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<cstdlib>
+	<vector>
+	<string>
+	<algorithm>
+	<fstream>
+	<cstdio>
+	<iostream>
+	<cmath>
+	<SDL/SDL_image.h>
+	"objloader.h"
+	"vector3d.h"
+
+1391940670 source:d:\martin\programming\c and c++\bullet game\functions.cpp
+	"functions.h"
+
+1392840004 d:\martin\programming\c and c++\bullet game\main.h
+	<iostream>
+	"functions.h"
+	<SDL/SDL.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	"camera.h"
+	<vector>
+	"level.h"
+	"objloader.h"
+	"player.h"
+	<btBulletDynamicsCommon.h>
+	<BulletSoftBody/btSoftRigidDynamicsWorld.h>
+	<BulletSoftBody/btDefaultSoftBodySolver.h>
+	<BulletSoftBody/btSoftBodyHelpers.h>
+	<BulletSoftBody/btSoftBodyRigidBodyCollisionConfiguration.h>
+	<BulletDynamics/Vehicle/btRaycastVehicle.h>
+	"GlutDemoApplication.h"
+
+1391733511 d:\martin\programming\c and c++\bullet game\level.h
+	<vector>
+	<iostream>
+	"gl/gl.h"
+	"gl/glu.h"
+	<string>
+	"collisionplane.h"
+	"vector3d.h"
+	"SDL\SDL.h"
+
+1390623923 c:\sdl-1.2.14\include\sdl\sdl_opengl.h
+	"SDL_config.h"
+	<windows.h>
+	<OpenGL/gl.h>
+	<OpenGL/glu.h>
+	<gl.h>
+	<glu.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<windows.h>
+	<stddef.h>
+
+1391841415 source:d:\martin\programming\c and c++\bullet game\objloader.cpp
+	"objloader.h"
+
+1391489359 source:d:\martin\programming\c and c++\bullet game\collision.cpp
+	"collision.h"
+
+1391483349 d:\martin\programming\c and c++\bullet game\collision.h
+	"vector3d.h"
+	<cmath>
+
+1391496504 source:d:\martin\programming\c and c++\bullet game\collisionplane.cpp
+	"collisionplane.h"
+
+1391107407 source:d:\martin\programming\c and c++\bullet game\collisionsphere.cpp
+	"collisionsphere.h"
+
+1391052069 d:\martin\programming\c and c++\bullet game\collisionsphere.h
+	<iostream>
+	"vector3d.h"
+
+1391978362 source:d:\martin\programming\c and c++\bullet game\level.cpp
+	"level.h"
+
+1392492884 d:\martin\programming\c and c++\bullet game\player.h
+	<SDL/SDL.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<iostream>
+	<cstdlib>
+	"weapon.h"
+	"vector3d.h"
+	"collisionsphere.h"
+	"collision.h"
+	"collisionplane.h"
+	<string>
+	<vector>
+	"camera.h"
+
+1391851237 d:\martin\programming\c and c++\bullet game\weapon.h
+	<vector>
+	"gl/gl.h"
+	"gl/glu.h"
+	"SDL/SDL.h"
+	"vector3d.h"
+	<iostream>
+	<fstream>
+	<cstdlib>
+
+1392496634 source:d:\martin\programming\c and c++\bullet game\player.cpp
+	"player.h"
+
+1391841710 source:d:\martin\programming\c and c++\bullet game\weapon.cpp
+	"weapon.h"
+
+1392590905 source:d:\martin\programming\c and c++\bullet game\demoapplication.cpp
+	"DemoApplication.h"
+	"LinearMath/btIDebugDraw.h"
+	"BulletDynamics/Dynamics/btDynamicsWorld.h"
+	"BulletDynamics/ConstraintSolver/btPoint2PointConstraint.h"
+	"BulletDynamics/ConstraintSolver/btGeneric6DofConstraint.h"
+	"BulletCollision/CollisionShapes/btCollisionShape.h"
+	"BulletCollision/CollisionShapes/btBoxShape.h"
+	"BulletCollision/CollisionShapes/btSphereShape.h"
+	"BulletCollision/CollisionShapes/btCompoundShape.h"
+	"BulletCollision/CollisionShapes/btUniformScalingShape.h"
+	"BulletDynamics/ConstraintSolver/btConstraintSolver.h"
+	"GL_ShapeDrawer.h"
+	"LinearMath/btQuickprof.h"
+	"LinearMath/btDefaultMotionState.h"
+	"LinearMath/btSerializer.h"
+	"GLDebugFont.h"
+	"BulletCollision/BroadphaseCollision/btAxisSweep3.h"
+
+1392770000 d:\martin\programming\c and c++\bullet game\demoapplication.h
+	"GlutStuff.h"
+	"GL_ShapeDrawer.h"
+	<stdlib.h>
+	<stdio.h>
+	<math.h>
+	"LinearMath/btVector3.h"
+	"LinearMath/btMatrix3x3.h"
+	"LinearMath/btTransform.h"
+	"LinearMath/btQuickprof.h"
+	"LinearMath/btAlignedObjectArray.h"
+
+1283204783 d:\martin\programming\c and c++\bullet game\glutstuff.h
+	<windows.h>
+	<OpenGL/OpenGL.h>
+	<OpenGL/gl.h>
+	<OpenGL/glu.h>
+	<GLUT/glut.h>
+	<windows.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<GL/gl.h>
+	<GL/glut.h>
+	"GL/freeglut_ext.h"
+
+1392800910 d:\martin\programming\c and c++\bullet game\gl_shapedrawer.h
+	"LinearMath/btAlignedObjectArray.h"
+	"LinearMath/btVector3.h"
+	"BulletCollision/CollisionShapes/btShapeHull.h"
+
+1273705390 d:\martin\programming\c and c++\bullet game\gldebugfont.h
+	"LinearMath/btVector3.h"
+
+1347211350 source:d:\martin\programming\c and c++\bullet game\gldebugdrawer.cpp
+	"GLDebugDrawer.h"
+	"GLDebugFont.h"
+	"GlutStuff.h"
+	<stdio.h>
+
+1347211350 d:\martin\programming\c and c++\bullet game\gldebugdrawer.h
+	"LinearMath/btIDebugDraw.h"
+
+1338405774 source:d:\martin\programming\c and c++\bullet game\gldebugfont.cpp
+	"GLDebugFont.h"
+	<windows.h>
+	<TargetConditionals.h>
+	<OpenGL/gl.h>
+	<OpenGL/glu.h>
+	<GLUT/glut.h>
+	<windows.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<GL/gl.h>
+	<GL/glut.h>
+	<stdio.h>
+	<string.h>
+
+1392938694 source:d:\martin\programming\c and c++\bullet game\gl_shapedrawer.cpp
+	<windows.h>
+	"GLDebugFont.h"
+	"GlutStuff.h"
+	"GL_ShapeDrawer.h"
+	"BulletCollision/CollisionShapes/btPolyhedralConvexShape.h"
+	"BulletCollision/CollisionShapes/btTriangleMeshShape.h"
+	"BulletCollision/CollisionShapes/btBoxShape.h"
+	"BulletCollision/CollisionShapes/btSphereShape.h"
+	"BulletCollision/CollisionShapes/btConeShape.h"
+	"BulletCollision/CollisionShapes/btCylinderShape.h"
+	"BulletCollision/CollisionShapes/btTetrahedronShape.h"
+	"BulletCollision/CollisionShapes/btCompoundShape.h"
+	"BulletCollision/CollisionShapes/btCapsuleShape.h"
+	"BulletCollision/CollisionShapes/btConvexTriangleMeshShape.h"
+	"BulletCollision/CollisionShapes/btUniformScalingShape.h"
+	"BulletCollision/CollisionShapes/btStaticPlaneShape.h"
+	"BulletCollision/CollisionShapes/btMultiSphereShape.h"
+	"BulletCollision/CollisionShapes/btConvexPolyhedron.h"
+	"BulletCollision/CollisionShapes/btShapeHull.h"
+	"LinearMath/btTransformUtil.h"
+	"LinearMath/btIDebugDraw.h"
+	<stdio.h>
+	<map>
+
+1267889016 source:d:\martin\programming\c and c++\bullet game\glutdemoapplication.cpp
+	"GlutDemoApplication.h"
+	"GlutStuff.h"
+	"BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h"
+	"BulletDynamics/Dynamics/btRigidBody.h"
+
+1339030590 d:\martin\programming\c and c++\bullet game\glutdemoapplication.h
+	"DemoApplication.h"
+
+1267904258 source:d:\martin\programming\c and c++\bullet game\glutstuff.cpp
+	"DemoApplication.h"
+	"GlutStuff.h"
+

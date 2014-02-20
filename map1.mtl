@@ -1,0 +1,50 @@
+# Blender MTL File: 'None'
+# Material Count: 5
+
+newmtl (null)
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl None_2640354735_3aacb670e5
+Ns 0.000000
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.800000 0.800000 0.800000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd D:\Martin\Programming\C and C++\SDL\Tank_Game - Copy\share\2640354735_3aacb670e5.bmp
+
+newmtl None_830.jpg
+Ns 0.000000
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.800000 0.800000 0.800000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd D:\Martin\Programming\C and C++\SDL\Tank_Game - Copy\830.bmp
+
+newmtl None_brickwall.jpg
+Ns 0.000000
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.800000 0.800000 0.800000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd D:\Martin\Programming\C and C++\SDL\Tank_Game - Copy\brickwall.bmp
+
+newmtl collision
+Ns 92.156863
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.000000 0.000000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
