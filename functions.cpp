@@ -111,7 +111,7 @@ void drawSkybox(float size)
 	//glEnable(GL_LIGHTING);	//turn everything back, which we turned on, and turn everything off, which we have turned on.
 	//glEnable(GL_DEPTH_TEST);
 	if(!b1)
-		glDisable(GL_TEXTURE_2D);
+        glDisable(GL_TEXTURE_2D);
 }
 
 
@@ -243,11 +243,26 @@ unsigned int loadTexture(const char* name, int background)
 //	std::cout << img->w << " " << img->h << std::endl;
 	SDL_Surface* img2=SDL_ConvertSurface(img,&form,SDL_SWSURFACE);
 	unsigned int texture;
+
+
+    /// 1. creating a texture object P182
+    // generate unique texture names
 	glGenTextures(1,&texture);
+	// bind the texture before OpenGL creates the associated texture object
 	glBindTexture(GL_TEXTURE_2D,texture);
+
+    /// 2. Specifying Textures
+    // copy image data to it
 	glTexImage2D(GL_TEXTURE_2D,0,GL_RGBA,img2->w,img2->h,0,GL_RGBA, GL_UNSIGNED_INT_8_8_8_8,img2->pixels);
 	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
+
+	// texture warp modes
+    // allows you to modify how OpenGL interprets texture coordinates outside of the range [0,1]
+	//		glTexParameterf(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S,GL_REPEAT);
+	//		glTexParameterf(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T,GL_REPEAT);
+
+
 
     if(background)
     {

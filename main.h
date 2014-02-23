@@ -152,7 +152,7 @@ class game
 	bool	setShadows(bool enable)	{ bool p=m_enableshadows;m_enableshadows=enable;return(p); }
 
     void initPhysics_BasicDemo();
-    void myinit();
+    void init_Lighting();
     void render_BasicDemo();
     void renderscene_BasicDemo(int pass);
 

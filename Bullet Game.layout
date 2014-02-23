@@ -1,20 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="DemoApplication.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="24944" topLine="992" />
+	<File name="DemoApplication.cpp" open="1" top="0" tabpos="6">
+		<Cursor position="14564" topLine="1004" />
 	</File>
 	<File name="DemoApplication.h" open="0" top="0" tabpos="0">
 		<Cursor position="4618" topLine="198" />
 	</File>
-	<File name="GL_ShapeDrawer.cpp" open="1" top="1" tabpos="4">
-		<Cursor position="25645" topLine="865" />
+	<File name="GLDebugDrawer.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="668" topLine="15" />
 	</File>
-	<File name="GL_ShapeDrawer.h" open="1" top="0" tabpos="3">
+	<File name="GLDebugFont.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="948" topLine="0" />
+	</File>
+	<File name="GL_ShapeDrawer.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="15921" topLine="386" />
+	</File>
+	<File name="GL_ShapeDrawer.h" open="0" top="0" tabpos="3">
 		<Cursor position="1633" topLine="33" />
 	</File>
-	<File name="Player.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="2156" topLine="106" />
+	<File name="GlutDemoApplication.cpp" open="0" top="0" tabpos="16">
+		<Cursor position="513" topLine="8" />
+	</File>
+	<File name="GlutStuff.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="0" topLine="0" />
+	</File>
+	<File name="Player.cpp" open="0" top="0" tabpos="15">
+		<Cursor position="4786" topLine="215" />
 	</File>
 	<File name="Player.h" open="0" top="0" tabpos="0">
 		<Cursor position="1996" topLine="80" />
@@ -25,8 +37,8 @@
 	<File name="camera.h" open="0" top="0" tabpos="0">
 		<Cursor position="483" topLine="15" />
 	</File>
-	<File name="collisionplane.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="450" topLine="16" />
+	<File name="collisionplane.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="534" topLine="0" />
 	</File>
 	<File name="collisionplane.h" open="0" top="0" tabpos="0">
 		<Cursor position="520" topLine="0" />
@@ -34,8 +46,8 @@
 	<File name="collisionsphere.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="173" topLine="0" />
 	</File>
-	<File name="functions.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="2841" topLine="252" />
+	<File name="functions.cpp" open="1" top="0" tabpos="5">
+		<Cursor position="7782" topLine="231" />
 	</File>
 	<File name="functions.h" open="0" top="0" tabpos="0">
 		<Cursor position="444" topLine="0" />
@@ -43,11 +55,11 @@
 	<File name="level.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="330" topLine="0" />
 	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="42102" topLine="1372" />
+	<File name="main.cpp" open="1" top="1" tabpos="8">
+		<Cursor position="47886" topLine="1572" />
 	</File>
-	<File name="main.h" open="1" top="0" tabpos="1">
-		<Cursor position="3294" topLine="16" />
+	<File name="main.h" open="1" top="0" tabpos="7">
+		<Cursor position="2005" topLine="87" />
 	</File>
 	<File name="objloader.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="14574" topLine="459" />

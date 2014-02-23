@@ -24,9 +24,9 @@
 
 
 ///create 125 (5x5x5) dynamic object
-#define ARRAY_SIZE_X 2
-#define ARRAY_SIZE_Y 2
-#define ARRAY_SIZE_Z 2
+#define ARRAY_SIZE_X 5
+#define ARRAY_SIZE_Y 5
+#define ARRAY_SIZE_Z 5
 
 
 
@@ -36,9 +36,21 @@
 #define START_POS_Y -5
 #define START_POS_Z -3
 
+bool PILE = true;
 
 
 
+int Cyl_x = 0;
+int Cyl_y = 30;
+int Cyl_z = 0;
+
+int Cone_x = 5;
+int Cone_y = 30;
+int Cone_z = 0;
+
+int Box_x = 0;
+int Box_y = 40;
+int Box_z = 0;
 
 
 
@@ -88,10 +100,13 @@ struct bulletObject
     int id;
     float r,g,b;
     bool hit;
+
+    bool pile;
+
     // void* yourOwnStructure; // function
     btRigidBody* body;
-    bulletObject(btRigidBody* b, int i, float r0, float g0, float b0) : body(b), id(1)
-                            ,r(r0), g(g0), b(b0), hit(false)
+    bulletObject(btRigidBody* b, int i, float r0, float g0, float b0, bool pile0 = false) : body(b), id(1)
+                            ,r(r0), g(g0), b(b0), hit(false), pile(pile0)
     {}
 };
 
@@ -134,38 +149,6 @@ btSoftBodySolver* softbodySolver;
 
 
 
-
-/*
-// radius
-// position
-// mass
-// btRigidBody: main class for rigid body objects
-btRigidBody* addSphere(float rad,float x,float y,float z,float mass)
-{
-	btTransform t;	//position and rotation
-	t.setIdentity();
-	t.setOrigin(btVector3(x,y,z));	//put it to x,y,z coordinates
-	btSphereShape* sphere=new btSphereShape(rad);	//it's a sphere, so use sphereshape
-	btVector3 inertia(0,0,0);	//inertia is 0,0,0 for static object, else
-
-	// if the body is static
-	if(mass!=0.0)
-		sphere->calculateLocalInertia(mass,inertia);	//it can be determined by this function (for all kind of shapes)
-
-	btMotionState* motion=new btDefaultMotionState(t);	//set the position (and motion)
-	btRigidBody::btRigidBodyConstructionInfo info(mass,motion,sphere,inertia);	//create the constructioninfo, you can create multiple bodies with the same info
-	btRigidBody* body=new btRigidBody(info);	//let's create the body itself
-
-	// let the world know there's a sphere
-	world->addRigidBody(body);
-	bodies.push_back(new bulletObject(body, 0, 1,0,0));	//to be easier to clean, I store them a vector
-
-    // get the last element of the vector
-    body->setUserPointer(bodies[bodies.size()-1]);
-
-	return body;
-}
-*/
 
 
 btRigidBody* addSphere(float rad,float x,float y,float z,float mass)
@@ -238,8 +221,9 @@ btRigidBody* addCone(float d,float h,float x,float y,float z,float mass)
 }
 
 
-btRigidBody* addBox(float width,float height,float depth,float x,float y,float z,float mass)
+btRigidBody* addBox(float width,float height,float depth,float x,float y,float z,float mass, bool pile = false)
 {
+
     btTransform t;
     t.setIdentity();
     t.setOrigin(btVector3(x,y,z));
@@ -252,7 +236,8 @@ btRigidBody* addBox(float width,float height,float depth,float x,float y,float z
     btRigidBody::btRigidBodyConstructionInfo info(mass,motion,sphere,inertia);
     btRigidBody* body=new btRigidBody(info);
     world->addRigidBody(body);
-    bodies.push_back(new bulletObject(body, 3, 1,1,0));	//to be easier to clean, I store them a vector
+
+    bodies.push_back(new bulletObject(body, 3, 1,1,0, pile));	//to be easier to clean, I store them a vector
 
     body->setUserPointer(bodies[bodies.size()-1]);
     return body;
@@ -372,8 +357,78 @@ void renderCone(bulletObject* b_obj)
 
 
 
-void renderBox(bulletObject* b_obj)
+
+
+void renderPileBox(bulletObject* b_obj)
 {
+    glDisable(GL_CULL_FACE);
+
+        btRigidBody* sphere=b_obj->body;
+
+
+
+        btTransform t;
+        sphere->getMotionState()->getWorldTransform(t);
+        btScalar mat[16];
+        t.getOpenGLMatrix(mat);
+
+
+	glPushMatrix();
+	btglMultMatrix(mat);
+        btCollisionShape* shape = sphere->getCollisionShape();
+
+        const btBoxShape* boxShape = static_cast<const btBoxShape*>(shape);
+
+        btVector3 halfExtent = boxShape->getHalfExtentsWithMargin();
+
+        static int indices[36] = {
+            0,1,2,
+            3,2,1,
+            4,0,6,
+            6,0,2,
+            5,1,4,
+            4,1,0,
+            7,3,1,
+            7,1,5,
+            5,4,7,
+            7,4,6,
+            7,2,3,
+            7,6,2};
+
+         btVector3 vertices[8]={
+            btVector3(halfExtent[0],halfExtent[1],halfExtent[2]),
+            btVector3(-halfExtent[0],halfExtent[1],halfExtent[2]),
+            btVector3(halfExtent[0],-halfExtent[1],halfExtent[2]),
+            btVector3(-halfExtent[0],-halfExtent[1],halfExtent[2]),
+            btVector3(halfExtent[0],halfExtent[1],-halfExtent[2]),
+            btVector3(-halfExtent[0],halfExtent[1],-halfExtent[2]),
+            btVector3(halfExtent[0],-halfExtent[1],-halfExtent[2]),
+            btVector3(-halfExtent[0],-halfExtent[1],-halfExtent[2])};
+
+        glBegin (GL_TRIANGLES);
+        int si=36;
+        for (int i=0;i<si;i+=3)
+        {
+            const btVector3& v1 = vertices[indices[i]];;
+            const btVector3& v2 = vertices[indices[i+1]];
+            const btVector3& v3 = vertices[indices[i+2]];
+            btVector3 normal = (v3-v1).cross(v2-v1);
+            normal.normalize ();
+            glNormal3f(normal.getX(),normal.getY(),normal.getZ());
+            glVertex3f (v1.x(), v1.y(), v1.z());
+            glVertex3f (v2.x(), v2.y(), v2.z());
+            glVertex3f (v3.x(), v3.y(), v3.z());
+
+        }
+        glEnd();
+
+
+    glNormal3f(0,1,0);
+
+    glPopMatrix();
+
+/*
+glEnable(GL_COLOR_MATERIAL);
         btRigidBody* sphere=b_obj->body;
         if(sphere->getCollisionShape()->getShapeType()!=BOX_SHAPE_PROXYTYPE)
                 return;
@@ -382,6 +437,113 @@ void renderBox(bulletObject* b_obj)
                 glColor3f(b_obj->r,b_obj->g,b_obj->b);
         else
                 glColor3f(1,0,0);
+
+
+
+
+        btVector3 wireColor(1.f,1.0f,0.5f); //wants deactivation
+		if(i&1) wireColor=btVector3(0.f,0.0f,1.f);
+		///color differently for active, sleeping, wantsdeactivation states
+		if (colObj->getActivationState() == 1) //active
+		{
+			if (i & 1)
+			{
+				wireColor += btVector3 (1.f,0.f,0.f);
+			}
+			else
+			{
+				wireColor += btVector3 (.5f,0.f,0.f);
+			}
+		}
+		if(colObj->getActivationState()==2) //ISLAND_SLEEPING
+		{
+			if(i&1)
+			{
+				wireColor += btVector3 (0.f,1.f, 0.f);
+			}
+			else
+			{
+				wireColor += btVector3 (0.f,0.5f,0.f);
+			}
+		}
+
+        glColor3f(1,0,0);
+        btVector3 extent=((btBoxShape*)sphere->getCollisionShape())->getHalfExtentsWithoutMargin();
+
+        btTransform t;
+        sphere->getMotionState()->getWorldTransform(t);
+        float mat[16];
+        t.getOpenGLMatrix(mat);
+
+
+
+
+        btVector3 aabbMin,aabbMax;
+		world->getBroadphase()->getBroadphaseAabb(aabbMin,aabbMax);
+
+	//	aabbMin-=btVector3(BT_LARGE_FLOAT,BT_LARGE_FLOAT,BT_LARGE_FLOAT);
+	//	aabbMax+=btVector3(BT_LARGE_FLOAT,BT_LARGE_FLOAT,BT_LARGE_FLOAT);
+
+
+
+        glPushMatrix();
+                glMultMatrixf(mat);     //translation,rotation
+                glBegin(GL_QUADS);
+                        glVertex3f(-extent.x(),extent.y(),-extent.z());
+                        glVertex3f(-extent.x(),-extent.y(),-extent.z());
+                        glVertex3f(-extent.x(),-extent.y(),extent.z());
+                        glVertex3f(-extent.x(),extent.y(),extent.z());
+                glEnd();
+                glBegin(GL_QUADS);
+                        glVertex3f(extent.x(),extent.y(),-extent.z());
+                        glVertex3f(extent.x(),-extent.y(),-extent.z());
+                        glVertex3f(extent.x(),-extent.y(),extent.z());
+                        glVertex3f(extent.x(),extent.y(),extent.z());
+                glEnd();
+                glBegin(GL_QUADS);
+                        glVertex3f(-extent.x(),extent.y(),extent.z());
+                        glVertex3f(-extent.x(),-extent.y(),extent.z());
+                        glVertex3f(extent.x(),-extent.y(),extent.z());
+                        glVertex3f(extent.x(),extent.y(),extent.z());
+                glEnd();
+                glBegin(GL_QUADS);
+                        glVertex3f(-extent.x(),extent.y(),-extent.z());
+                        glVertex3f(-extent.x(),-extent.y(),-extent.z());
+                        glVertex3f(extent.x(),-extent.y(),-extent.z());
+                        glVertex3f(extent.x(),extent.y(),-extent.z());
+                glEnd();
+                glBegin(GL_QUADS);
+                        glVertex3f(-extent.x(),extent.y(),-extent.z());
+                        glVertex3f(-extent.x(),extent.y(),extent.z());
+                        glVertex3f(extent.x(),extent.y(),extent.z());
+                        glVertex3f(extent.x(),extent.y(),-extent.z());
+                glEnd();
+                glBegin(GL_QUADS);
+                        glVertex3f(-extent.x(),-extent.y(),-extent.z());
+                        glVertex3f(-extent.x(),-extent.y(),extent.z());
+                        glVertex3f(extent.x(),-extent.y(),extent.z());
+                        glVertex3f(extent.x(),-extent.y(),-extent.z());
+                glEnd();
+        glPopMatrix();
+
+*/
+
+}
+
+
+void renderBox(bulletObject* b_obj)
+{
+
+        btRigidBody* sphere=b_obj->body;
+        if(sphere->getCollisionShape()->getShapeType()!=BOX_SHAPE_PROXYTYPE)
+                return;
+
+        if(!b_obj->hit)
+                glColor3f(b_obj->r,b_obj->g,b_obj->b);
+        else
+                glColor3f(1,0,0);
+
+
         btVector3 extent=((btBoxShape*)sphere->getCollisionShape())->getHalfExtentsWithoutMargin();
         btTransform t;
         sphere->getMotionState()->getWorldTransform(t);
@@ -426,6 +588,7 @@ void renderBox(bulletObject* b_obj)
                         glVertex3f(extent.x(),-extent.y(),-extent.z());
                 glEnd();
         glPopMatrix();
+
 }
 
 
@@ -913,8 +1076,10 @@ void game::show()
     }
 
 */
-
-
+    init_Lighting();
+    glColor3f(1,1,1);
+    glEnable(GL_COLOR_MATERIAL);
+  //  glDisable(GL_LIGHTING);
 	for(int i=0;i<bodies.size();i++)
 	{
         if(bodies[i]->body->getCollisionShape()->getShapeType()==STATIC_PLANE_PROXYTYPE)
@@ -925,8 +1090,14 @@ void game::show()
                 renderCylinder(bodies[i]);
         else if(bodies[i]->body->getCollisionShape()->getShapeType()==CONE_SHAPE_PROXYTYPE)
                 renderCone(bodies[i]);
+
         else if(bodies[i]->body->getCollisionShape()->getShapeType()==BOX_SHAPE_PROXYTYPE)
+        {
+            if(bodies[i]->pile == PILE)
+                renderPileBox(bodies[i]);
+            else
                 renderBox(bodies[i]);
+        }
 	}
 
     for(int i=0; i<world->getSoftBodyArray().size(); i++)
@@ -959,8 +1130,8 @@ void game::show()
 	}
 */
 
-    render_BasicDemo();
-          glColor3f(1,1,1);
+//    render_BasicDemo();
+
 
 
 
@@ -1012,14 +1183,16 @@ bool callbackFunc(btManifoldPoint& cp,
 // with ray tracing
 
     cout << "collision" << endl;
+    if(obj1 != NULL && obj2 != NULL)
+    {
+        const btCollisionObject* obj3 = obj1->getCollisionObject();
+        const btCollisionObject* obj4 = obj2->getCollisionObject();
+     //   if(obj3 != NULL && obj4 != NULL)
+     //   cout << ((bulletObject*)obj3->getUserPointer())->id <<  " " <<  ((bulletObject*)obj4->getUserPointer())->id <<  endl;
+        ((bulletObject*)obj3->getUserPointer())->hit=true;
 
-    const btCollisionObject* obj3 = obj1->getCollisionObject();
-    const btCollisionObject* obj4 = obj2->getCollisionObject();
- //   if(obj3 != NULL && obj4 != NULL)
- //   cout << ((bulletObject*)obj3->getUserPointer())->id <<  " " <<  ((bulletObject*)obj4->getUserPointer())->id <<  endl;
-    ((bulletObject*)obj3->getUserPointer())->hit=true;
-
-    ((bulletObject*)obj4->getUserPointer())->hit=true;
+        ((bulletObject*)obj4->getUserPointer())->hit=true;
+    }
     return false;
 
 }
@@ -1055,22 +1228,17 @@ int main(int argc, char *argv[])
 
 	//init(angle);
     gContactAddedCallback=callbackFunc;
-/*
-    addCylinder(2,5,
-                    20,30,0,
-                        1.0);
 
-    addCone(2,5,
-            25,30,0,
-                1.0);
 
-    addBox(10,2,3,
-            20,40,0,
-                1.0);
-*/
-    addCylinder(2,5,0,30,0,1.0);
-    addCone(2,5,5,30,0,1.0);
-    addBox(10,2,3,0,40,0,1.0);
+
+
+    addCylinder(2,5,Cyl_x,Cyl_y,Cyl_z,1.0);
+    addCone(2,5,Cone_x,Cone_y,Cone_z,1.0);
+    addBox(10,2,3,Box_x,Box_y,Box_z,1.0);
+
+
+
+// adding the pile of box
 
 
 
@@ -1190,10 +1358,10 @@ void game::initPhysics_BasicDemo()
 	m_shapeDrawer->enableTexture(true);
 	m_enableshadows = false;
 
-
     setTexturing(true);
-    setShadows(true);
+    setShadows(false);
 
+    // this is the plane-box the demo had
     btBoxShape* groundShape = new btBoxShape(btVector3(btScalar(50.),btScalar(50.),btScalar(50.)));
 
     m_collisionShapes.push_back(groundShape);
@@ -1257,6 +1425,7 @@ void game::initPhysics_BasicDemo()
 										btScalar(20+2.0*k + start_y),
 										btScalar(2.0*j + start_z)));
 
+					/*
 					//using motionstate is recommended, it provides interpolation capabilities, and only synchronizes 'active' objects
 					btDefaultMotionState* myMotionState = new btDefaultMotionState(startTransform);
 					btRigidBody::btRigidBodyConstructionInfo rbInfo(mass,myMotionState,colShape,localInertia);
@@ -1264,9 +1433,12 @@ void game::initPhysics_BasicDemo()
 
 
 					world->addRigidBody(body);
-
-
-
+*/
+                  //  addBox(float width,float height,float depth,float x,float y,float z,float mass)
+                    addBox(SCALING*2,SCALING*2, SCALING*2,
+                                                SCALING*btScalar(2.0*i + start_x),
+                                                SCALING*btScalar(20+2.0*k + start_y),
+                                                SCALING*btScalar(2.0*j + start_z),1, PILE );
 
 				}
 			}
@@ -1275,7 +1447,7 @@ void game::initPhysics_BasicDemo()
 }
 
 
-void game::myinit()
+void game::init_Lighting()
 {
     GLfloat light_ambient[] = { btScalar(0.2), btScalar(0.2), btScalar(0.2), btScalar(1.0) };
 	GLfloat light_diffuse[] = { btScalar(1.0), btScalar(1.0), btScalar(1.0), btScalar(1.0) };
@@ -1313,16 +1485,63 @@ void game::myinit()
 void game::render_BasicDemo()
 {
    // 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    myinit();
+
 
     if(world)
     {
         cout << "I'm inside render_BasicDemo" << endl;
-        {
-            glDisable(GL_CULL_FACE);
-            renderscene_BasicDemo(0);
 
-        }
+/*
+        if(m_enableshadows)
+		{
+			glClear(GL_STENCIL_BUFFER_BIT);
+			glEnable(GL_CULL_FACE);
+			renderscene_BasicDemo(0);
+
+			glDisable(GL_LIGHTING);
+			glDepthMask(GL_FALSE);
+			glDepthFunc(GL_LEQUAL);
+			glEnable(GL_STENCIL_TEST);
+			glColorMask(GL_FALSE,GL_FALSE,GL_FALSE,GL_FALSE);
+			glStencilFunc(GL_ALWAYS,1,0xFFFFFFFFL);
+			glFrontFace(GL_CCW);
+			glStencilOp(GL_KEEP,GL_KEEP,GL_INCR);
+			renderscene_BasicDemo(1);
+			glFrontFace(GL_CW);
+			glStencilOp(GL_KEEP,GL_KEEP,GL_DECR);
+			renderscene_BasicDemo(1);
+			glFrontFace(GL_CCW);
+
+			glPolygonMode(GL_FRONT,GL_FILL);
+			glPolygonMode(GL_BACK,GL_FILL);
+			glShadeModel(GL_SMOOTH);
+			glEnable(GL_DEPTH_TEST);
+			glDepthFunc(GL_LESS);
+			glEnable(GL_LIGHTING);
+			glDepthMask(GL_TRUE);
+			glCullFace(GL_BACK);
+			glFrontFace(GL_CCW);
+			glEnable(GL_CULL_FACE);
+			glColorMask(GL_TRUE,GL_TRUE,GL_TRUE,GL_TRUE);
+
+			glDepthFunc(GL_LEQUAL);
+			glStencilFunc( GL_NOTEQUAL, 0, 0xFFFFFFFFL );
+			glStencilOp( GL_KEEP, GL_KEEP, GL_KEEP );
+			glDisable(GL_LIGHTING);
+			renderscene_BasicDemo(2);
+			glEnable(GL_LIGHTING);
+			glDepthFunc(GL_LESS);
+			glDisable(GL_STENCIL_TEST);
+			glDisable(GL_CULL_FACE);
+		}
+		else
+		*/
+		{
+			glDisable(GL_CULL_FACE);
+			renderscene_BasicDemo(0);
+		}
+
+
 
         int xOffset = 10;
         int yStart = 20;
@@ -1341,14 +1560,13 @@ void game::renderscene_BasicDemo(int pass)
 	rot.setIdentity();
 
 	const int	numObjects=world->getNumCollisionObjects();
-	btVector3 wireColor(1,1,1);
+	btVector3 wireColor(1,0,0);
     cout << "numObjects is " << numObjects << endl;
 
     glPushMatrix();
-    for(int i=4; i<numObjects; i++)
+
+    for(int i=0; i<numObjects; i++)
     {
-
-
 
         btCollisionObject*  colObj=world->getCollisionObjectArray()[i];
 
@@ -1359,66 +1577,44 @@ void game::renderscene_BasicDemo(int pass)
         cout << "shape is " << colObj->getCollisionShape()->getShapeType() << endl;
   //      cout << "collision shape is " << body->getCollisionShape()->getShapeType()<< endl;
 
+        if( colObj->getCollisionShape()->getShapeType() != 0)
+            continue;
+
+
 		if(body&&body->getMotionState())
 		{
 			btDefaultMotionState* myMotionState = (btDefaultMotionState*)body->getMotionState();
 			myMotionState->m_graphicsWorldTrans.getOpenGLMatrix(m);
-			rot=myMotionState->m_graphicsWorldTrans.getBasis();
+	//		rot=myMotionState->m_graphicsWorldTrans.getBasis();
 		}
 		else
 		{
 			colObj->getWorldTransform().getOpenGLMatrix(m);
-			rot=colObj->getWorldTransform().getBasis();
+	//		rot=colObj->getWorldTransform().getBasis();
 		}
-
-/*
-        btVector3 wireColor(1.f,1.0f,0.5f); //wants deactivation
-		if(i&1) wireColor=btVector3(0.f,0.0f,1.f);
-		///color differently for active, sleeping, wantsdeactivation states
-		if (colObj->getActivationState() == 1) //active
-		{
-			if (i & 1)
-			{
-				wireColor += btVector3 (1.f,0.f,0.f);
-			}
-			else
-			{
-				wireColor += btVector3 (.5f,0.f,0.f);
-			}
-		}
-		if(colObj->getActivationState()==2) //ISLAND_SLEEPING
-		{
-			if(i&1)
-			{
-				wireColor += btVector3 (0.f,1.f, 0.f);
-			}
-			else
-			{
-				wireColor += btVector3 (0.f,0.5f,0.f);
-			}
-		}
-
-
-*/
-
-
 
 
         btVector3 aabbMin,aabbMax;
 		world->getBroadphase()->getBroadphaseAabb(aabbMin,aabbMax);
 
-		aabbMin-=btVector3(BT_LARGE_FLOAT,BT_LARGE_FLOAT,BT_LARGE_FLOAT);
-		aabbMax+=btVector3(BT_LARGE_FLOAT,BT_LARGE_FLOAT,BT_LARGE_FLOAT);
+	//	aabbMin-=btVector3(BT_LARGE_FLOAT,BT_LARGE_FLOAT,BT_LARGE_FLOAT);
+	//	aabbMax+=btVector3(BT_LARGE_FLOAT,BT_LARGE_FLOAT,BT_LARGE_FLOAT);
+
+		aabbMin=btVector3(0,0,0);
+		aabbMax=btVector3(0,0,0);
+
 
         switch(pass)
         {
             case	0:	m_shapeDrawer->drawOpenGL(m,colObj->getCollisionShape(),wireColor,0,aabbMin,aabbMax);break;
-            case	1:	m_shapeDrawer->drawShadow(m,m_sundirection*rot,colObj->getCollisionShape(),aabbMin,aabbMax);break;
-            case	2:	m_shapeDrawer->drawOpenGL(m,colObj->getCollisionShape(),wireColor*btScalar(0.3),0,aabbMin,aabbMax);break;
+         //   case	1:	m_shapeDrawer->drawShadow(m,m_sundirection*rot,colObj->getCollisionShape(),aabbMin,aabbMax);break;
+        //    case	2:	m_shapeDrawer->drawOpenGL(m,colObj->getCollisionShape(),wireColor*btScalar(0.3),0,aabbMin,aabbMax);break;
         }
 
  //        glBindTexture(GL_TEXTURE_2D, 0);
     }
+
+
         glPopMatrix();
         glColor3f(1,1,1);
     //    glDisable(GL_COLOR_MATERIAL);
