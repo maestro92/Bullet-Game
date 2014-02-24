@@ -9,7 +9,7 @@
 1391946193 source:d:\martin\programming\c and c++\bullet game\camera.cpp
 	"camera.h"
 
-1391939186 d:\martin\programming\c and c++\bullet game\camera.h
+1393195825 d:\martin\programming\c and c++\bullet game\camera.h
 	<cmath>
 	<iostream>
 	<SDL/SDL.h>
@@ -197,13 +197,14 @@
 	"begin_code.h"
 	"close_code.h"
 
-1393124551 source:d:\martin\programming\c and c++\bullet game\main.cpp
+1393230630 source:d:\martin\programming\c and c++\bullet game\main.cpp
 	"main.h"
 	"DemoApplication.h"
 	"GLDebugDrawer.h"
 	<stdio.h>
 	"GL_ShapeDrawer.h"
 	"GlutStuff.h"
+	<SOIL.h>
 
 1391936783 d:\martin\programming\c and c++\bullet game\gl_functions.h
 	<cstdlib>
@@ -272,7 +273,7 @@
 1393120651 source:d:\martin\programming\c and c++\bullet game\functions.cpp
 	"functions.h"
 
-1392840004 d:\martin\programming\c and c++\bullet game\main.h
+1393228580 d:\martin\programming\c and c++\bullet game\main.h
 	<iostream>
 	"functions.h"
 	<SDL/SDL.h>
@@ -283,6 +284,8 @@
 	"level.h"
 	"objloader.h"
 	"player.h"
+	<glm/glm.hpp>
+	<glm/gtc/type_ptr.hpp>
 	<btBulletDynamicsCommon.h>
 	<BulletSoftBody/btSoftRigidDynamicsWorld.h>
 	<BulletSoftBody/btDefaultSoftBodySolver.h>
@@ -443,7 +446,7 @@
 	<stdio.h>
 	<string.h>
 
-1393124671 source:d:\martin\programming\c and c++\bullet game\gl_shapedrawer.cpp
+1393136654 source:d:\martin\programming\c and c++\bullet game\gl_shapedrawer.cpp
 	<windows.h>
 	"GLDebugFont.h"
 	"GlutStuff.h"

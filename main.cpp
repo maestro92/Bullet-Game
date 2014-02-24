@@ -1,6 +1,4 @@
 #include "main.h"
-#include "DemoApplication.h"
-
 
 
 #include "GLDebugDrawer.h"
@@ -10,6 +8,7 @@
 
 #include "GlutStuff.h"
 
+#include <SOIL.h>
 
 
 #define PLANE_SIZE  1000
@@ -18,9 +17,6 @@
 
 #define SCREEN_WIDTH    640
 #define SCREEN_HEIGHT   480
-
-
-
 
 
 ///create 125 (5x5x5) dynamic object
@@ -88,6 +84,14 @@ float	rollInfluence = 0.1f;//1.0f;
 btScalar suspensionRestLength(0.6);
 #define CUBE_HALF_EXTENTS 1
 
+
+
+int gPickingConstraint_M = 0;
+btVector3 gOldPickingPos_M;
+btVector3 gHitPos_M(-1,-1,-1);
+float gOldPickingDist_M = 0.f;
+btRigidBody* pickedBody_M = 0;
+btScalar mousePickClamping_M = 30.f;
 
 
 
@@ -359,9 +363,13 @@ void renderCone(bulletObject* b_obj)
 
 
 
-void renderPileBox(bulletObject* b_obj)
+void renderPileBox(bulletObject* b_obj, int i, bool draw_outline)
 {
-    glDisable(GL_CULL_FACE);
+
+    if(!draw_outline)
+    {
+
+        glDisable(GL_CULL_FACE);
 
         btRigidBody* sphere=b_obj->body;
 
@@ -373,161 +381,97 @@ void renderPileBox(bulletObject* b_obj)
         t.getOpenGLMatrix(mat);
 
 
-	glPushMatrix();
-	btglMultMatrix(mat);
-        btCollisionShape* shape = sphere->getCollisionShape();
 
-        const btBoxShape* boxShape = static_cast<const btBoxShape*>(shape);
 
-        btVector3 halfExtent = boxShape->getHalfExtentsWithMargin();
 
-        static int indices[36] = {
-            0,1,2,
-            3,2,1,
-            4,0,6,
-            6,0,2,
-            5,1,4,
-            4,1,0,
-            7,3,1,
-            7,1,5,
-            5,4,7,
-            7,4,6,
-            7,2,3,
-            7,6,2};
-
-         btVector3 vertices[8]={
-            btVector3(halfExtent[0],halfExtent[1],halfExtent[2]),
-            btVector3(-halfExtent[0],halfExtent[1],halfExtent[2]),
-            btVector3(halfExtent[0],-halfExtent[1],halfExtent[2]),
-            btVector3(-halfExtent[0],-halfExtent[1],halfExtent[2]),
-            btVector3(halfExtent[0],halfExtent[1],-halfExtent[2]),
-            btVector3(-halfExtent[0],halfExtent[1],-halfExtent[2]),
-            btVector3(halfExtent[0],-halfExtent[1],-halfExtent[2]),
-            btVector3(-halfExtent[0],-halfExtent[1],-halfExtent[2])};
-
-        glBegin (GL_TRIANGLES);
-        int si=36;
-        for (int i=0;i<si;i+=3)
+        // determining the color
+        btVector3 boxColor(1.f,1.0f,0.5f); //wants deactivation
+        if(i&1) boxColor=btVector3(0.f,0.0f,1.f);
+        ///color differently for active, sleeping, wantsdeactivation states
+        if (sphere->getActivationState() == 1) //active
         {
-            const btVector3& v1 = vertices[indices[i]];;
-            const btVector3& v2 = vertices[indices[i+1]];
-            const btVector3& v3 = vertices[indices[i+2]];
-            btVector3 normal = (v3-v1).cross(v2-v1);
-            normal.normalize ();
-            glNormal3f(normal.getX(),normal.getY(),normal.getZ());
-            glVertex3f (v1.x(), v1.y(), v1.z());
-            glVertex3f (v2.x(), v2.y(), v2.z());
-            glVertex3f (v3.x(), v3.y(), v3.z());
-
+            if (i & 1)
+            {
+                boxColor += btVector3 (1.f,0.f,0.f);
+            }
+            else
+            {
+                boxColor += btVector3 (.5f,0.f,0.f);
+            }
         }
-        glEnd();
+        if(sphere->getActivationState()==2) //ISLAND_SLEEPING
+        {
+            if(i&1)
+            {
+                boxColor += btVector3 (0.f,1.f, 0.f);
+            }
+            else
+            {
+                boxColor += btVector3 (0.f,0.5f,0.f);
+            }
+        }
+        glColor3f(boxColor.x(), boxColor.y(), boxColor.z());
 
-
-    glNormal3f(0,1,0);
-
-    glPopMatrix();
-
-/*
-glEnable(GL_COLOR_MATERIAL);
-        btRigidBody* sphere=b_obj->body;
-        if(sphere->getCollisionShape()->getShapeType()!=BOX_SHAPE_PROXYTYPE)
-                return;
-
-        if(!b_obj->hit)
-                glColor3f(b_obj->r,b_obj->g,b_obj->b);
-        else
-                glColor3f(1,0,0);
-
-
-
-
-        btVector3 wireColor(1.f,1.0f,0.5f); //wants deactivation
-		if(i&1) wireColor=btVector3(0.f,0.0f,1.f);
-		///color differently for active, sleeping, wantsdeactivation states
-		if (colObj->getActivationState() == 1) //active
-		{
-			if (i & 1)
-			{
-				wireColor += btVector3 (1.f,0.f,0.f);
-			}
-			else
-			{
-				wireColor += btVector3 (.5f,0.f,0.f);
-			}
-		}
-		if(colObj->getActivationState()==2) //ISLAND_SLEEPING
-		{
-			if(i&1)
-			{
-				wireColor += btVector3 (0.f,1.f, 0.f);
-			}
-			else
-			{
-				wireColor += btVector3 (0.f,0.5f,0.f);
-			}
-		}
-
-        glColor3f(1,0,0);
-        btVector3 extent=((btBoxShape*)sphere->getCollisionShape())->getHalfExtentsWithoutMargin();
-
-        btTransform t;
-        sphere->getMotionState()->getWorldTransform(t);
-        float mat[16];
-        t.getOpenGLMatrix(mat);
-
-
-
-
-        btVector3 aabbMin,aabbMax;
-		world->getBroadphase()->getBroadphaseAabb(aabbMin,aabbMax);
-
-	//	aabbMin-=btVector3(BT_LARGE_FLOAT,BT_LARGE_FLOAT,BT_LARGE_FLOAT);
-	//	aabbMax+=btVector3(BT_LARGE_FLOAT,BT_LARGE_FLOAT,BT_LARGE_FLOAT);
 
 
 
         glPushMatrix();
-                glMultMatrixf(mat);     //translation,rotation
-                glBegin(GL_QUADS);
-                        glVertex3f(-extent.x(),extent.y(),-extent.z());
-                        glVertex3f(-extent.x(),-extent.y(),-extent.z());
-                        glVertex3f(-extent.x(),-extent.y(),extent.z());
-                        glVertex3f(-extent.x(),extent.y(),extent.z());
-                glEnd();
-                glBegin(GL_QUADS);
-                        glVertex3f(extent.x(),extent.y(),-extent.z());
-                        glVertex3f(extent.x(),-extent.y(),-extent.z());
-                        glVertex3f(extent.x(),-extent.y(),extent.z());
-                        glVertex3f(extent.x(),extent.y(),extent.z());
-                glEnd();
-                glBegin(GL_QUADS);
-                        glVertex3f(-extent.x(),extent.y(),extent.z());
-                        glVertex3f(-extent.x(),-extent.y(),extent.z());
-                        glVertex3f(extent.x(),-extent.y(),extent.z());
-                        glVertex3f(extent.x(),extent.y(),extent.z());
-                glEnd();
-                glBegin(GL_QUADS);
-                        glVertex3f(-extent.x(),extent.y(),-extent.z());
-                        glVertex3f(-extent.x(),-extent.y(),-extent.z());
-                        glVertex3f(extent.x(),-extent.y(),-extent.z());
-                        glVertex3f(extent.x(),extent.y(),-extent.z());
-                glEnd();
-                glBegin(GL_QUADS);
-                        glVertex3f(-extent.x(),extent.y(),-extent.z());
-                        glVertex3f(-extent.x(),extent.y(),extent.z());
-                        glVertex3f(extent.x(),extent.y(),extent.z());
-                        glVertex3f(extent.x(),extent.y(),-extent.z());
-                glEnd();
-                glBegin(GL_QUADS);
-                        glVertex3f(-extent.x(),-extent.y(),-extent.z());
-                        glVertex3f(-extent.x(),-extent.y(),extent.z());
-                        glVertex3f(extent.x(),-extent.y(),extent.z());
-                        glVertex3f(extent.x(),-extent.y(),-extent.z());
-                glEnd();
+        btglMultMatrix(mat);
+            btCollisionShape* shape = sphere->getCollisionShape();
+
+            const btBoxShape* boxShape = static_cast<const btBoxShape*>(shape);
+
+            btVector3 halfExtent = boxShape->getHalfExtentsWithMargin();
+
+            static int indices[36] = {
+                0,1,2,
+                3,2,1,
+                4,0,6,
+                6,0,2,
+                5,1,4,
+                4,1,0,
+                7,3,1,
+                7,1,5,
+                5,4,7,
+                7,4,6,
+                7,2,3,
+                7,6,2};
+
+             btVector3 vertices[8]={
+                btVector3(halfExtent[0],halfExtent[1],halfExtent[2]),
+                btVector3(-halfExtent[0],halfExtent[1],halfExtent[2]),
+                btVector3(halfExtent[0],-halfExtent[1],halfExtent[2]),
+                btVector3(-halfExtent[0],-halfExtent[1],halfExtent[2]),
+                btVector3(halfExtent[0],halfExtent[1],-halfExtent[2]),
+                btVector3(-halfExtent[0],halfExtent[1],-halfExtent[2]),
+                btVector3(halfExtent[0],-halfExtent[1],-halfExtent[2]),
+                btVector3(-halfExtent[0],-halfExtent[1],-halfExtent[2])};
+
+            glBegin (GL_TRIANGLES);
+            int si=36;
+            for (int i=0;i<si;i+=3)
+            {
+                const btVector3& v1 = vertices[indices[i]];;
+                const btVector3& v2 = vertices[indices[i+1]];
+                const btVector3& v3 = vertices[indices[i+2]];
+                btVector3 normal = (v3-v1).cross(v2-v1);
+                normal.normalize ();
+                glNormal3f(normal.getX(),normal.getY(),normal.getZ());
+                glVertex3f (v1.x(), v1.y(), v1.z());
+                glVertex3f (v2.x(), v2.y(), v2.z());
+                glVertex3f (v3.x(), v3.y(), v3.z());
+
+            }
+            glEnd();
+
+
+        glNormal3f(0,1,0);
+
         glPopMatrix();
-
-*/
-
+    }
+    else
+    {
+    }
 }
 
 
@@ -552,36 +496,42 @@ void renderBox(bulletObject* b_obj)
         glPushMatrix();
                 glMultMatrixf(mat);     //translation,rotation
                 glBegin(GL_QUADS);
+                        glNormal3f(-1.0,0.0,0.0);
                         glVertex3f(-extent.x(),extent.y(),-extent.z());
                         glVertex3f(-extent.x(),-extent.y(),-extent.z());
                         glVertex3f(-extent.x(),-extent.y(),extent.z());
                         glVertex3f(-extent.x(),extent.y(),extent.z());
                 glEnd();
                 glBegin(GL_QUADS);
+                        glNormal3f(1.0,0.0,0.0);
                         glVertex3f(extent.x(),extent.y(),-extent.z());
                         glVertex3f(extent.x(),-extent.y(),-extent.z());
                         glVertex3f(extent.x(),-extent.y(),extent.z());
                         glVertex3f(extent.x(),extent.y(),extent.z());
                 glEnd();
                 glBegin(GL_QUADS);
+                        glNormal3f(0.0,0.0,1.0);
                         glVertex3f(-extent.x(),extent.y(),extent.z());
                         glVertex3f(-extent.x(),-extent.y(),extent.z());
                         glVertex3f(extent.x(),-extent.y(),extent.z());
                         glVertex3f(extent.x(),extent.y(),extent.z());
                 glEnd();
                 glBegin(GL_QUADS);
+                        glNormal3f(0.0,0.0,-1.0);
                         glVertex3f(-extent.x(),extent.y(),-extent.z());
                         glVertex3f(-extent.x(),-extent.y(),-extent.z());
                         glVertex3f(extent.x(),-extent.y(),-extent.z());
                         glVertex3f(extent.x(),extent.y(),-extent.z());
                 glEnd();
                 glBegin(GL_QUADS);
+                        glNormal3f(0.0,1.0,0.0);
                         glVertex3f(-extent.x(),extent.y(),-extent.z());
                         glVertex3f(-extent.x(),extent.y(),extent.z());
                         glVertex3f(extent.x(),extent.y(),extent.z());
                         glVertex3f(extent.x(),extent.y(),-extent.z());
                 glEnd();
                 glBegin(GL_QUADS);
+                        glNormal3f(0.0,-1.0,0.0);
                         glVertex3f(-extent.x(),-extent.y(),-extent.z());
                         glVertex3f(-extent.x(),-extent.y(),extent.z());
                         glVertex3f(extent.x(),-extent.y(),extent.z());
@@ -658,6 +608,13 @@ void renderSoftbody(btSoftBody* b)
 
 game::game(float angle) //init(float angle)
 {
+    draw_outline = false;
+    MouseDragMode = false;
+    m_pickConstraint_M = 0;
+	m_mouseOldX = 0;
+	m_mouseOldY = 0;
+
+
     // creates and returns a pointer to a new quadric object
 	quad = gluNewQuadric();
 
@@ -786,6 +743,12 @@ game::game(float angle) //init(float angle)
 	glClearColor(0,0,0,1);
 	glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
+
+		// fovy, aspect, zNear, zFar
+
+		// you block out things inside the near plane
+
+		// http://www.youtube.com/watch?v=ohksz3A00fk
 		gluPerspective(angle,640.0/480.0,1,1000);
 	glMatrixMode(GL_MODELVIEW);
 
@@ -1006,6 +969,18 @@ btRigidBody* game::CreateRigidBody(float mass, const btTransform& startTransform
 }
 
 
+btVector3 game::getCameraPosition()
+{
+    return btVector3(player1->cam.getLocation().x, player1->cam.getLocation().y, player1->cam.getLocation().z);
+}
+
+btVector3 game::getCameraTargetPosition()
+{
+    return btVector3(player1->cam.getVector().x, player1->cam.getVector().y, player1->cam.getVector().z);
+}
+
+
+
 void game::show()
 {
 //    player1->update(levels[0]->getCollisionPlanes());
@@ -1031,14 +1006,25 @@ void game::show()
         gluCylinder(quad, 1.0,1.0,5.0,30,1);
     glPopMatrix();
 */
+
+/*
     cout << "player1 getposition is " << player1->getPosition().x << " "
                                         << player1->getPosition().y << " "
                                         << player1->getPosition().z << endl;
+*/
 
+/*
     cout << "player1->cam Location is " << player1->cam.getLocation().x << " "
                                         << player1->cam.getLocation().y << " "
                                         << player1->cam.getLocation().z << endl << endl;
+*/
 
+/*
+    cout << "player1->cam look direction is " << player1->cam.getVector().x << " "
+                                        << player1->cam.getVector().y << " "
+                                        << player1->cam.getVector().z << endl << endl;
+
+*/
 
     // btCollisionWorld::ClosestRayResultCallback
     // if I want all the objects hit by the ray,not just the closest
@@ -1094,7 +1080,7 @@ void game::show()
         else if(bodies[i]->body->getCollisionShape()->getShapeType()==BOX_SHAPE_PROXYTYPE)
         {
             if(bodies[i]->pile == PILE)
-                renderPileBox(bodies[i]);
+                renderPileBox(bodies[i],i,draw_outline);
             else
                 renderBox(bodies[i]);
         }
@@ -1131,8 +1117,6 @@ void game::show()
 */
 
 //    render_BasicDemo();
-
-
 
 
 }
@@ -1240,8 +1224,6 @@ int main(int argc, char *argv[])
 
 // adding the pile of box
 
-
-
 	while(running)
 	{
 		start=SDL_GetTicks();
@@ -1259,6 +1241,23 @@ int main(int argc, char *argv[])
 						case SDLK_ESCAPE:
 							running=false;
 							break;
+
+
+                        case SDLK_g:
+                            Martin.m_enableshadows = !Martin.m_enableshadows;
+                            break;
+
+                        // draw red_outlines
+                        case SDLK_z:
+                            Martin.draw_outline = !Martin.draw_outline;
+                            break;
+
+                        case SDLK_o:
+                            Martin.MouseDragMode = !Martin.MouseDragMode;
+                            cout << "Martin.MouseDragMode is now " << Martin.MouseDragMode << endl;
+                            Martin.player1->cam.mouseIn(false);
+                            SDL_ShowCursor(SDL_ENABLE);
+                            break;
 
                         case SDLK_p:
                             Martin.player1->cam.mouseIn(false);
@@ -1293,10 +1292,41 @@ int main(int argc, char *argv[])
 
 					}
 					break;
+                case SDL_MOUSEBUTTONUP:
+               //     if (Martin.MouseDragMode)
+                    {
+                        Martin.removePickingConstraint();
+                        break;
+                    }
+
 				case SDL_MOUSEBUTTONDOWN:
-					Martin.player1->cam.mouseIn(true);
-					SDL_ShowCursor(SDL_DISABLE);
-					break;
+                    if (Martin.MouseDragMode)
+                    {
+                        int tmpx,tmpy;
+                        SDL_GetMouseState(&tmpx,&tmpy);
+
+                        cout << "x is " << tmpx << " " << "y is " << tmpy << endl;
+
+                        Martin.mouseFunc_BasicDemo(tmpx, tmpy);
+                        break;
+                    }
+
+                    // player mode
+                    else
+                    {
+                        int tmpx,tmpy;
+                        SDL_GetMouseState(&tmpx,&tmpy);
+
+                        cout << "x is " << tmpx << " " << "y is " << tmpy << endl;
+
+                        Martin.mouseFunc_BasicDemo(tmpx, tmpy);
+
+                        Martin.player1->cam.mouseIn(true);
+                        SDL_ShowCursor(SDL_DISABLE);
+                        break;
+
+                    }
+
 
 			}
 		}
@@ -1305,6 +1335,12 @@ int main(int argc, char *argv[])
 		// wating for the time elapsed then
 		// argument: amount of time to step the simulation by
 		// you can actually call this with varying variables, so you can actually mease the time since last update
+
+        int tmpx,tmpy;
+        SDL_GetMouseState(&tmpx,&tmpy);
+
+        Martin.mouseMotionFunc_BasicDemo(tmpx, tmpy);
+
 
         for(int i=0;i<bodies.size();i++)
             bodies[i]->hit=false;
@@ -1370,6 +1406,7 @@ void game::initPhysics_BasicDemo()
 	groundTransform.setOrigin(btVector3(0,-50,0));
 
     //We can also use DemoApplication::localCreateRigidBody, but for clarity it is provided here:
+    /*
     {
         btScalar mass(0.);
 
@@ -1387,7 +1424,7 @@ void game::initPhysics_BasicDemo()
         //add the body to the dynamics world
     //    world->addRigidBody(body);
     }
-
+    */
 
     {
     // create a few dynamic rigidbodies
@@ -1425,16 +1462,8 @@ void game::initPhysics_BasicDemo()
 										btScalar(20+2.0*k + start_y),
 										btScalar(2.0*j + start_z)));
 
-					/*
-					//using motionstate is recommended, it provides interpolation capabilities, and only synchronizes 'active' objects
-					btDefaultMotionState* myMotionState = new btDefaultMotionState(startTransform);
-					btRigidBody::btRigidBodyConstructionInfo rbInfo(mass,myMotionState,colShape,localInertia);
-					btRigidBody* body = new btRigidBody(rbInfo);
 
-
-					world->addRigidBody(body);
-*/
-                  //  addBox(float width,float height,float depth,float x,float y,float z,float mass)
+					// add a box
                     addBox(SCALING*2,SCALING*2, SCALING*2,
                                                 SCALING*btScalar(2.0*i + start_x),
                                                 SCALING*btScalar(20+2.0*k + start_y),
@@ -1476,6 +1505,7 @@ void game::init_Lighting()
 	glDepthFunc(GL_LESS);
 
 	glClearColor(btScalar(0.7),btScalar(0.7),btScalar(0.7),btScalar(0));
+
 
 	//  glEnable(GL_CULL_FACE);
 	//  glCullFace(GL_BACK);
@@ -1585,23 +1615,21 @@ void game::renderscene_BasicDemo(int pass)
 		{
 			btDefaultMotionState* myMotionState = (btDefaultMotionState*)body->getMotionState();
 			myMotionState->m_graphicsWorldTrans.getOpenGLMatrix(m);
-	//		rot=myMotionState->m_graphicsWorldTrans.getBasis();
+			rot=myMotionState->m_graphicsWorldTrans.getBasis();
 		}
 		else
 		{
 			colObj->getWorldTransform().getOpenGLMatrix(m);
-	//		rot=colObj->getWorldTransform().getBasis();
+			rot=colObj->getWorldTransform().getBasis();
 		}
 
 
         btVector3 aabbMin,aabbMax;
 		world->getBroadphase()->getBroadphaseAabb(aabbMin,aabbMax);
 
-	//	aabbMin-=btVector3(BT_LARGE_FLOAT,BT_LARGE_FLOAT,BT_LARGE_FLOAT);
-	//	aabbMax+=btVector3(BT_LARGE_FLOAT,BT_LARGE_FLOAT,BT_LARGE_FLOAT);
+		aabbMin-=btVector3(BT_LARGE_FLOAT,BT_LARGE_FLOAT,BT_LARGE_FLOAT);
+		aabbMax+=btVector3(BT_LARGE_FLOAT,BT_LARGE_FLOAT,BT_LARGE_FLOAT);
 
-		aabbMin=btVector3(0,0,0);
-		aabbMax=btVector3(0,0,0);
 
 
         switch(pass)
@@ -1622,3 +1650,231 @@ void game::renderscene_BasicDemo(int pass)
 }
 
 
+
+
+void game::mouseFunc_BasicDemo(int x, int y)
+{
+    m_mouseOldX = x;
+    m_mouseOldY = y;
+
+    btVector3 rayTo = getMousePickingRay(x,y);
+    if(world)
+    {
+
+
+        /// use this if using First Person Center Mode
+        /*
+        btVector3 CamPos = getCameraPosition_M();
+        btVector3 direction = getCameraTargetPosition_M()*10000;
+        btCollisionWorld::ClosestRayResultCallback rayCallback(temp3,direction);
+
+        world->rayTest(CamPos, direction, rayCallback);
+        */
+
+
+
+
+
+        btVector3 rayFrom;
+        rayFrom = getCameraPosition();
+        btCollisionWorld::ClosestRayResultCallback rayCallback(rayFrom,rayTo);
+
+        /*
+        cout << "rayFrom is " << rayFrom.x() << " "
+                                        << rayFrom.y() << " "
+                                        << rayFrom.z() << endl << endl;
+
+        cout << "rayTo is " << rayTo.x() << " "
+                                        << rayTo.y() << " "
+                                        << rayTo.z() << endl << endl;
+        */
+
+
+        // shoot a virtual laser between the two points, if it hits, we continue
+        // detects collision with any object in the world
+        world->rayTest(rayFrom, rayTo, rayCallback);
+
+        if (rayCallback.hasHit())
+        {
+            cout << "hits" << endl;
+
+            btRigidBody* body = (btRigidBody*)btRigidBody::upcast(rayCallback.m_collisionObject);
+
+
+            if (body)
+            {
+
+                if (!(body->isStaticObject() || body->isKinematicObject()))
+                {
+                    cout << "inside Constraint" << endl;
+                    pickedBody_M = body;
+                    pickedBody_M->setActivationState(DISABLE_DEACTIVATION);
+
+
+                    btVector3 pickPos = rayCallback.m_hitPointWorld;
+                    printf("pickPos=%f,%f,%f\n",pickPos.getX(),pickPos.getY(),pickPos.getZ());
+
+                    // the center of mass matrix
+                    // WHY????
+                    btVector3 localPivot = body->getCenterOfMassTransform().inverse() * pickPos;
+
+                    // Glut's version of detecing SHIFT or CTRL
+                    // so here means if SHIFT is pressed or not
+
+                    {
+                        btTransform tr;
+                        tr.setIdentity();
+                        tr.setOrigin(localPivot);
+
+                        /// http://bulletphysics.org/Bullet/BulletFull/classbtGeneric6DofConstraint.html#details
+                        /// btGeneric6DofConstraint between two rigidbodies each with a pivotpoint that describes the axis location in local space
+                        btGeneric6DofConstraint* dof6_M = new btGeneric6DofConstraint(*body, tr,false);
+
+                        /// these are used to set constraints of the box, (angular or linear)
+                        /// if you comment these lines out, your box which turn or whatever as it collides with other boxes
+                        dof6_M->setLinearLowerLimit(btVector3(0,0,0));
+                        dof6_M->setLinearUpperLimit(btVector3(0,0,0));
+                        dof6_M->setAngularLowerLimit(btVector3(0,0,0));
+                        dof6_M->setAngularUpperLimit(btVector3(0,0,0));
+
+                        world->addConstraint(dof6_M,true);
+                        m_pickConstraint_M = dof6_M;
+
+
+                        // CFM: constraint force mixing
+                        dof6_M->setParam(BT_CONSTRAINT_STOP_CFM,0.8,0);
+                        dof6_M->setParam(BT_CONSTRAINT_STOP_CFM,0.8,1);
+                        dof6_M->setParam(BT_CONSTRAINT_STOP_CFM,0.8,2);
+                        dof6_M->setParam(BT_CONSTRAINT_STOP_CFM,0.8,3);
+                        dof6_M->setParam(BT_CONSTRAINT_STOP_CFM,0.8,4);
+                        dof6_M->setParam(BT_CONSTRAINT_STOP_CFM,0.8,5);
+
+                        // ERP: error reduction parameter
+                        dof6_M->setParam(BT_CONSTRAINT_STOP_ERP,0.1,0);
+                        dof6_M->setParam(BT_CONSTRAINT_STOP_ERP,0.1,1);
+                        dof6_M->setParam(BT_CONSTRAINT_STOP_ERP,0.1,2);
+                        dof6_M->setParam(BT_CONSTRAINT_STOP_ERP,0.1,3);
+                        dof6_M->setParam(BT_CONSTRAINT_STOP_ERP,0.1,4);
+                        dof6_M->setParam(BT_CONSTRAINT_STOP_ERP,0.1,5);
+                    }
+
+                    //save mouse position for dragging
+                    gOldPickingPos_M = rayTo;
+                    gHitPos_M = pickPos;
+
+                    gOldPickingDist_M  = (pickPos-rayFrom).length();
+                }
+            }
+
+        }
+    }
+
+
+}
+
+void game::mouseMotionFunc_BasicDemo(int x, int y)
+{
+
+
+    if(m_pickConstraint_M)
+    {
+        cout << "m_pickConstraint_M" << endl;
+
+
+		if (m_pickConstraint_M->getConstraintType() == D6_CONSTRAINT_TYPE)
+		{
+            btGeneric6DofConstraint* pickCon = static_cast<btGeneric6DofConstraint*>(m_pickConstraint_M);
+            if (pickCon)
+            {
+
+                btVector3 newRayTo = getMousePickingRay(x,y);
+				btVector3 rayFrom;
+				btVector3 oldPivotInB = pickCon->getFrameOffsetA().getOrigin();
+
+				btVector3 newPivotB;
+
+				{
+				    cout << "not in m_orth" << endl;
+					rayFrom = getCameraPosition();
+					btVector3 dir = newRayTo-rayFrom;
+					dir.normalize();
+					dir *= gOldPickingDist_M;
+
+					newPivotB = rayFrom + dir;
+				}
+
+				pickCon->getFrameOffsetA().setOrigin(newPivotB);
+			}
+
+		}
+
+	}
+
+	float dx, dy;
+    dx = btScalar(x) - m_mouseOldX;
+    dy = btScalar(y) - m_mouseOldY;
+
+	m_mouseOldX = x;
+    m_mouseOldY = y;
+
+}
+
+
+
+
+// http://nehe.gamedev.net/article/using_gluunproject/16013/
+btVector3 game::getMousePickingRay(int mouse_x, int mouse_y)
+{
+
+    btVector3	rayFrom = getCameraPosition();
+
+    // Retrieve the Viewport
+    int viewport[4];
+    glGetIntegerv(GL_VIEWPORT, viewport);
+
+
+    double modelview[16];                 // Where The 16 Doubles Of The Modelview Matrix Are To Be Stored
+    glGetDoublev(GL_MODELVIEW_MATRIX, modelview);       // Retrieve The Modelview Matrix
+
+    double projection[16];                // Where The 16 Doubles Of The Projection Matrix Are To Be Stored
+    glGetDoublev(GL_PROJECTION_MATRIX, projection);     // Retrieve The Projection Matrix
+
+    float x = (float) mouse_x;
+    float y = (float) mouse_y;
+    float z;
+
+    // reverse y, since screen y-axis is opposite of OpenGL y-axis coordinate
+    y = (float)viewport[3] - y;
+
+    // getting the z coordinate
+    glReadPixels(x, (int)y, 1, 1, GL_DEPTH_COMPONENT, GL_FLOAT, &z);
+
+    // convert it to OpenGL world coordinate
+    double posX, posY, posZ;
+    gluUnProject( x, y, z, modelview, projection, viewport, &posX, &posY, &posZ);
+
+
+    // calculating the ray from Camera to the Mouse Picked Ray
+    btVector3 rayTo = btVector3(posX - rayFrom.x(), posY - rayFrom.y(), posZ - rayFrom.z());
+
+    // Scale it by 10000
+    rayTo = rayTo * 10000;
+
+    return rayTo;
+
+}
+
+
+
+void game::removePickingConstraint()
+{
+    if (m_pickConstraint_M && world)
+    {
+        world->removeConstraint(m_pickConstraint_M);
+        delete m_pickConstraint_M;
+        m_pickConstraint_M = 0;
+        pickedBody_M->forceActivationState(ACTIVE_TAG);
+		pickedBody_M->setDeactivationTime( 0.f );
+		pickedBody_M = 0;
+    }
+}

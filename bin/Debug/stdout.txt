@@ -4,666 +4,1402 @@
 0
 0
 0
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
-player1 getposition is 10 10 10
-player1->cam Location is 10 10 10
-
+x is 390 y is 283
+hits
+x is 320 y is 240
+hits
+inside Constraint
+pickPos=-4.565732,6.942071,5.369228
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+x is 320 y is 240
+hits
+inside Constraint
+pickPos=-3.121812,3.567918,7.013247
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+x is 320 y is 240
+hits
+inside Constraint
+pickPos=-3.706423,3.999523,2.774497
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+x is 320 y is 240
+hits
+inside Constraint
+pickPos=-5.439847,4.841189,3.887547
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+x is 320 y is 240
+hits
+inside Constraint
+pickPos=-3.303258,5.137977,-1.290951
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+x is 320 y is 240
+hits
+inside Constraint
+pickPos=-4.559837,5.600836,1.033056
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+Martin.MouseDragMode is now 1
+x is 403 y is 234
+hits
+inside Constraint
+pickPos=-1.488131,5.593652,1.370438
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+x is 309 y is 282
+hits
+inside Constraint
+pickPos=-1.102756,2.000010,-6.501282
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+Martin.MouseDragMode is now 0
+x is 309 y is 282
+hits
+inside Constraint
+pickPos=-1.102762,2.000013,-6.501270
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+Martin.MouseDragMode is now 1
+x is 479 y is 239
+hits
+inside Constraint
+pickPos=9.943329,1.373796,3.436043
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth
+m_pickConstraint_M
+not in m_orth

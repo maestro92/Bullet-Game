@@ -1,6 +1,37 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+
+
+
+/*
+
+ All bullet physics Shapes
+1. http://bulletphysics.org/Bullet/BulletFull/btBroadphaseProxy_8h.html
+
+ Mouse Picking
+1. http://www.opengl.org/archives/resources/faq/technical/selection.htm
+2. http://nehe.gamedev.net/article/using_gluunproject/16013/
+
+
+
+o   Toggle MouseDragMode
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
 #include <iostream>
 #include "functions.h"
 #include <SDL/SDL.h>
@@ -11,6 +42,9 @@
 #include "level.h"
 #include "objloader.h"
 #include "player.h"
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 
 
 
@@ -59,6 +93,9 @@ class game
     uint32_t count;
     bool decrease;
     // if the game is done running or not
+
+
+
     bool running;
 
     void update();
@@ -124,6 +161,8 @@ class game
         void start();
 
 
+
+
     void show();
 
 // GLSL portion
@@ -147,6 +186,12 @@ class game
 	bool			m_enableshadows;
 	btVector3		m_sundirection;
 
+    // drawing the red outline
+    bool draw_outline;
+
+
+    bool    DrawAabb;
+
 
 	bool	setTexturing(bool enable) { return(m_shapeDrawer->enableTexture(enable)); }
 	bool	setShadows(bool enable)	{ bool p=m_enableshadows;m_enableshadows=enable;return(p); }
@@ -159,10 +204,21 @@ class game
 
 
 
+	/// constraint for mouse picking
+    bool MouseDragMode;
 
+	int	m_mouseOldX;
+	int	m_mouseOldY;
 
+    btVector3 getCameraPosition();
+    btVector3 getCameraTargetPosition();
 
+	btTypedConstraint*		m_pickConstraint_M;
+    void removePickingConstraint();
 
+    void mouseMotionFunc_BasicDemo(int x, int y);
+    void mouseFunc_BasicDemo(int x, int y);
+    btVector3 getMousePickingRay(int mouse_x, int mouse_y);
 
 };
 

@@ -23,7 +23,11 @@ class camera{
 		camera(vector3d loc,float yaw,float pitch,float mv,float mov);
 		void Control();
 		void UpdateCamera();
+
+		// getting the look direciton
 		vector3d getVector();
+
+
 		vector3d getLocation();
 		float getPitch();
 		float getYaw();
