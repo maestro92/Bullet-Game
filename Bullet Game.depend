@@ -197,9 +197,8 @@
 	"begin_code.h"
 	"close_code.h"
 
-1393230630 source:d:\martin\programming\c and c++\bullet game\main.cpp
+1393321176 source:d:\martin\programming\c and c++\bullet game\main.cpp
 	"main.h"
-	"DemoApplication.h"
 	"GLDebugDrawer.h"
 	<stdio.h>
 	"GL_ShapeDrawer.h"
@@ -273,7 +272,7 @@
 1393120651 source:d:\martin\programming\c and c++\bullet game\functions.cpp
 	"functions.h"
 
-1393228580 d:\martin\programming\c and c++\bullet game\main.h
+1393312639 d:\martin\programming\c and c++\bullet game\main.h
 	<iostream>
 	"functions.h"
 	<SDL/SDL.h>

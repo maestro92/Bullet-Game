@@ -12,7 +12,7 @@
 
 
 #define PLANE_SIZE  1000
-#define SPHERE_VELOCITY  20
+#define SPHERE_VELOCITY  50
 
 
 #define SCREEN_WIDTH    640
@@ -119,7 +119,7 @@ struct bulletObject
 
 camera cam;
 
-// this is to draw a sphere
+// this is a declared Quadrics, used to draw any bizzare shapes
 GLUquadricObj* quad;
 
 // we will create a btDiscreteDynamicsWorld object through polymorphism (as a btDynamicsWorld object pointer)
@@ -361,6 +361,149 @@ void renderCone(bulletObject* b_obj)
 
 
 
+void renderCappedCylinder(bulletObject* b_obj)
+{
+    btRigidBody* sphere=b_obj->body;
+    // check if it's a sphere by checking the shape
+    // btRigidBody.h line 248
+	if(sphere->getCollisionShape()->getShapeType()!=CYLINDER_SHAPE_PROXYTYPE)	//only render, if it's a sphere
+		return;
+
+    // typecast sphere->getCollisionShape to btCylinderShape
+    const btCylinderShape* cylinder = static_cast<const btCylinderShape*>(sphere->getCollisionShape());
+    int upAxis = cylinder->getUpAxis();
+
+
+    float radius = cylinder->getRadius();
+    float halfHeight = cylinder->getHalfExtentsWithMargin()[upAxis];
+
+
+
+    if(!b_obj->hit)
+            glColor3f(b_obj->r,b_obj->g,b_obj->b);
+    else
+            glColor3f(1,0,0);
+
+
+
+// to get the motionState
+	btTransform t;
+	sphere->getMotionState()->getWorldTransform(t);	//get the transform
+	float mat[16];
+	t.getOpenGLMatrix(mat);	//OpenGL matrix stores the rotation and orientation
+
+	// this Matrix multiplication will only apply to this object, not everything else
+	glPushMatrix();
+		glMultMatrixf(mat);	//multiplying the current matrix with it moves the object in place
+
+
+    switch (upAxis)
+    {
+        case 0:
+            glRotatef(-90.0, 0.0, 1.0, 0.0);
+            glTranslatef(0.0, 0.0, -halfHeight);
+            break;
+        case 1:
+            glRotatef(-90.0, 1.0, 0.0, 0.0);
+            glTranslatef(0.0, 0.0, -halfHeight);
+            break;
+        case 2:
+
+            glTranslatef(0.0, 0.0, -halfHeight);
+            break;
+
+        default:
+            {
+                cout << "weird wheel axis" << endl;
+            }
+    }
+
+
+
+	gluQuadricDrawStyle(quad, (GLenum)GLU_FILL);
+	gluQuadricNormals(quad, (GLenum)GLU_SMOOTH);
+
+    gluDisk(quad,0,radius,15, 10);
+
+	gluCylinder(quad, radius, radius, 2.f*halfHeight, 15, 10);
+	glTranslatef(0.0f, 0.0f, 2.f*halfHeight);
+	glRotatef(-180.0f, 0.0f, 1.0f, 0.0f);
+
+    gluDisk(quad,0,radius,15, 10);
+
+    glPopMatrix();
+
+
+}
+
+
+
+
+
+void renderWheel(btScalar* m, const btCollisionShape* shape)
+{
+
+    // check if it's a sphere by checking the shape
+	if(shape->getShapeType()!=CYLINDER_SHAPE_PROXYTYPE)	//only render, if it's a sphere
+		return;
+
+    // typecast sphere->getCollisionShape to btCylinderShape
+    const btCylinderShape* cylinder = static_cast<const btCylinderShape*>(shape);
+    int upAxis = cylinder->getUpAxis();
+
+
+    float radius = cylinder->getRadius();
+    float halfHeight = cylinder->getHalfExtentsWithMargin()[upAxis];
+
+
+    glColor3f(1,0,0);
+
+
+	// this Matrix multiplication will only apply to this object, not everything else
+	glPushMatrix();
+		glMultMatrixf(m);	//multiplying the current matrix with it moves the object in place
+
+
+        switch (upAxis)
+        {
+            case 0:
+                glRotatef(-90.0, 0.0, 1.0, 0.0);
+                glTranslatef(0.0, 0.0, -halfHeight);
+                break;
+            case 1:
+                glRotatef(-90.0, 1.0, 0.0, 0.0);
+                glTranslatef(0.0, 0.0, -halfHeight);
+                break;
+            case 2:
+
+                glTranslatef(0.0, 0.0, -halfHeight);
+                break;
+
+            default:
+                {
+                    cout << "weird wheel axis" << endl;
+                }
+        }
+
+
+
+        gluQuadricDrawStyle(quad, (GLenum)GLU_FILL);
+        gluQuadricNormals(quad, (GLenum)GLU_SMOOTH);
+
+        gluDisk(quad,0,radius,15, 10);
+
+        gluCylinder(quad, radius, radius, 2.f*halfHeight, 15, 10);
+        glTranslatef(0.0f, 0.0f, 2.f*halfHeight);
+        glRotatef(-180.0f, 0.0f, 1.0f, 0.0f);
+
+        gluDisk(quad,0,radius,15, 10);
+
+    glPopMatrix();
+
+
+}
+
+
 
 
 void renderPileBox(bulletObject* b_obj, int i, bool draw_outline)
@@ -379,9 +522,6 @@ void renderPileBox(bulletObject* b_obj, int i, bool draw_outline)
         sphere->getMotionState()->getWorldTransform(t);
         btScalar mat[16];
         t.getOpenGLMatrix(mat);
-
-
-
 
 
         // determining the color
@@ -539,6 +679,154 @@ void renderBox(bulletObject* b_obj)
                 glEnd();
         glPopMatrix();
 
+}
+
+void renderCarBody(btScalar* m, const btCollisionShape* boxShape);
+
+
+
+
+
+
+void renderCompound(bulletObject* b_obj)
+{
+    cout << "I'm in Render Compound " << endl;
+
+    btRigidBody* sphere=b_obj->body;
+    if(sphere->getCollisionShape()->getShapeType()!=COMPOUND_SHAPE_PROXYTYPE)
+        return;
+
+    glColor3f(0,0,1);
+
+    btTransform t;
+    sphere->getMotionState()->getWorldTransform(t);
+    float mat[16];
+    t.getOpenGLMatrix(mat);
+
+	glPushMatrix();
+	btglMultMatrix(mat);
+
+        const btCompoundShape* compoundShape = static_cast<const btCompoundShape*>(sphere->getCollisionShape());
+
+        for (int i=compoundShape->getNumChildShapes()-1;i>=0;i--)
+        {
+
+            btTransform childTrans = compoundShape->getChildTransform(i);
+            const btCollisionShape* colShape = compoundShape->getChildShape(i);
+
+
+            ATTRIBUTE_ALIGNED16(btScalar) childMat[16];
+            childTrans.getOpenGLMatrix(childMat);
+            renderCarBody(childMat, colShape);
+       //     drawOpenGL(childMat,colShape,color,debugMode,worldBoundsMin,worldBoundsMax);
+        }
+    glPopMatrix();
+}
+
+
+
+void renderCarBody(btScalar* m, const btCollisionShape* shape)
+{
+
+        const btBoxShape* boxShape = static_cast<const btBoxShape*>(shape);
+        glColor3f(0,0,1);
+
+
+     //   btVector3 extent=((btBoxShape*)sphere->getCollisionShape())->getHalfExtentsWithoutMargin();
+
+
+
+        btVector3 halfExtent = boxShape->getHalfExtentsWithMargin();
+        glPushMatrix();
+                btglMultMatrix(m);    //translation,rotation
+					static int indices[36] = {
+						0,1,2,
+						3,2,1,
+						4,0,6,
+						6,0,2,
+						5,1,4,
+						4,1,0,
+						7,3,1,
+						7,1,5,
+						5,4,7,
+						7,4,6,
+						7,2,3,
+						7,6,2};
+
+					 btVector3 vertices[8]={
+						btVector3(halfExtent[0],halfExtent[1],halfExtent[2]),
+						btVector3(-halfExtent[0],halfExtent[1],halfExtent[2]),
+						btVector3(halfExtent[0],-halfExtent[1],halfExtent[2]),
+						btVector3(-halfExtent[0],-halfExtent[1],halfExtent[2]),
+						btVector3(halfExtent[0],halfExtent[1],-halfExtent[2]),
+						btVector3(-halfExtent[0],halfExtent[1],-halfExtent[2]),
+						btVector3(halfExtent[0],-halfExtent[1],-halfExtent[2]),
+						btVector3(-halfExtent[0],-halfExtent[1],-halfExtent[2])};
+
+					glBegin (GL_TRIANGLES);
+					int si=36;
+					for (int i=0;i<si;i+=3)
+					{
+						const btVector3& v1 = vertices[indices[i]];;
+						const btVector3& v2 = vertices[indices[i+1]];
+						const btVector3& v3 = vertices[indices[i+2]];
+						btVector3 normal = (v3-v1).cross(v2-v1);
+						normal.normalize ();
+						glNormal3f(normal.getX(),normal.getY(),normal.getZ());
+						glVertex3f (v1.x(), v1.y(), v1.z());
+						glVertex3f (v2.x(), v2.y(), v2.z());
+						glVertex3f (v3.x(), v3.y(), v3.z());
+
+					}
+					glEnd();
+        glPopMatrix();
+/*
+        glPushMatrix();
+                glMultMatrixf(m);     //translation,rotation
+                glBegin(GL_QUADS);
+                        glNormal3f(-1.0,0.0,0.0);
+                        glVertex3f(-extent.x(),extent.y(),-extent.z());
+                        glVertex3f(-extent.x(),-extent.y(),-extent.z());
+                        glVertex3f(-extent.x(),-extent.y(),extent.z());
+                        glVertex3f(-extent.x(),extent.y(),extent.z());
+                glEnd();
+                glBegin(GL_QUADS);
+                        glNormal3f(1.0,0.0,0.0);
+                        glVertex3f(extent.x(),extent.y(),-extent.z());
+                        glVertex3f(extent.x(),-extent.y(),-extent.z());
+                        glVertex3f(extent.x(),-extent.y(),extent.z());
+                        glVertex3f(extent.x(),extent.y(),extent.z());
+                glEnd();
+                glBegin(GL_QUADS);
+                        glNormal3f(0.0,0.0,1.0);
+                        glVertex3f(-extent.x(),extent.y(),extent.z());
+                        glVertex3f(-extent.x(),-extent.y(),extent.z());
+                        glVertex3f(extent.x(),-extent.y(),extent.z());
+                        glVertex3f(extent.x(),extent.y(),extent.z());
+                glEnd();
+                glBegin(GL_QUADS);
+                        glNormal3f(0.0,0.0,-1.0);
+                        glVertex3f(-extent.x(),extent.y(),-extent.z());
+                        glVertex3f(-extent.x(),-extent.y(),-extent.z());
+                        glVertex3f(extent.x(),-extent.y(),-extent.z());
+                        glVertex3f(extent.x(),extent.y(),-extent.z());
+                glEnd();
+                glBegin(GL_QUADS);
+                        glNormal3f(0.0,1.0,0.0);
+                        glVertex3f(-extent.x(),extent.y(),-extent.z());
+                        glVertex3f(-extent.x(),extent.y(),extent.z());
+                        glVertex3f(extent.x(),extent.y(),extent.z());
+                        glVertex3f(extent.x(),extent.y(),-extent.z());
+                glEnd();
+                glBegin(GL_QUADS);
+                        glNormal3f(0.0,-1.0,0.0);
+                        glVertex3f(-extent.x(),-extent.y(),-extent.z());
+                        glVertex3f(-extent.x(),-extent.y(),extent.z());
+                        glVertex3f(extent.x(),-extent.y(),extent.z());
+                        glVertex3f(extent.x(),-extent.y(),-extent.z());
+                glEnd();
+        glPopMatrix();
+*/
 }
 
 
@@ -787,8 +1075,7 @@ game::game(float angle) //init(float angle)
 
 
     initPhysics_BasicDemo();
-
-//    Create_Vehicle();
+    init_Vehicle();
 
 
 }
@@ -804,7 +1091,7 @@ game::~game()
 
 
 
-void game::Create_Vehicle()
+void game::init_Vehicle()
 {
     m_defaultContactProcessingThreshold = BT_LARGE_FLOAT;
 
@@ -822,22 +1109,21 @@ void game::Create_Vehicle()
     localTrans.setIdentity();
     localTrans.setOrigin(btVector3(0,1,0));
 
-
+    // implementation: m_childShapes.push_back(shape)
     compound->addChildShape(localTrans, chassisShape);
 
-    tr.setOrigin(btVector3(0,0.f,0));
 
-
+    tr.setOrigin(btVector3(20,5.f,0));
     m_carChassis = CreateRigidBody(800, tr, compound);
 
 
     /// This is causing it to crash...
     m_wheelShape = new btCylinderShapeX(btVector3(wheelWidth, wheelRadius, wheelRadius));
 
-    clientResetScene();
 
 
 
+	/// create vehicle
 
     {
         m_vehicleRaycaster = new btDefaultVehicleRaycaster(world);
@@ -853,22 +1139,23 @@ void game::Create_Vehicle()
         m_vehicle->setCoordinateSystem(rightIndex, upIndex, forwardIndex);
 
         bool isFrontWheel = true;
-        btVector3 connectionPointCS0(CUBE_HALF_EXTENTS-(0.3*wheelWidth), connectionHeight, 2*CUBE_HALF_EXTENTS-wheelRadius);
-        m_vehicle->addWheel(connectionPointCS0, wheelDirectionCS0, wheelAxleCS,suspensionRestLength, wheelRadius, m_tuning, isFrontWheel);
+        //choose coordinate system
+		m_vehicle->setCoordinateSystem(rightIndex,upIndex,forwardIndex);
+		btVector3 connectionPointCS0(CUBE_HALF_EXTENTS-(0.3*wheelWidth),connectionHeight,2*CUBE_HALF_EXTENTS-wheelRadius);
 
+		m_vehicle->addWheel(connectionPointCS0,wheelDirectionCS0,wheelAxleCS,suspensionRestLength,wheelRadius,m_tuning,isFrontWheel);
+		connectionPointCS0 = btVector3(-CUBE_HALF_EXTENTS+(0.3*wheelWidth),connectionHeight,2*CUBE_HALF_EXTENTS-wheelRadius);
 
-        connectionPointCS0 = btVector3(-CUBE_HALF_EXTENTS+(0.3*wheelWidth),connectionHeight,2*CUBE_HALF_EXTENTS-wheelRadius);
-        m_vehicle->addWheel(connectionPointCS0,wheelDirectionCS0,wheelAxleCS,suspensionRestLength,wheelRadius,m_tuning,isFrontWheel);
+		m_vehicle->addWheel(connectionPointCS0,wheelDirectionCS0,wheelAxleCS,suspensionRestLength,wheelRadius,m_tuning,isFrontWheel);
+		connectionPointCS0 = btVector3(-CUBE_HALF_EXTENTS+(0.3*wheelWidth),connectionHeight,-2*CUBE_HALF_EXTENTS+wheelRadius);
 
+		isFrontWheel = false;
+		m_vehicle->addWheel(connectionPointCS0,wheelDirectionCS0,wheelAxleCS,suspensionRestLength,wheelRadius,m_tuning,isFrontWheel);
+		connectionPointCS0 = btVector3(CUBE_HALF_EXTENTS-(0.3*wheelWidth),connectionHeight,-2*CUBE_HALF_EXTENTS+wheelRadius);
 
-        connectionPointCS0 = btVector3(-CUBE_HALF_EXTENTS+(0.3*wheelWidth),connectionHeight,-2*CUBE_HALF_EXTENTS+wheelRadius);
-        isFrontWheel = false;
-        m_vehicle->addWheel(connectionPointCS0,wheelDirectionCS0,wheelAxleCS,suspensionRestLength,wheelRadius,m_tuning,isFrontWheel);
+		m_vehicle->addWheel(connectionPointCS0,wheelDirectionCS0,wheelAxleCS,suspensionRestLength,wheelRadius,m_tuning,isFrontWheel);
 
-        connectionPointCS0 = btVector3(CUBE_HALF_EXTENTS-(0.3*wheelWidth),connectionHeight,-2*CUBE_HALF_EXTENTS+wheelRadius);
-        m_vehicle->addWheel(connectionPointCS0,wheelDirectionCS0,wheelAxleCS,suspensionRestLength,wheelRadius,m_tuning,isFrontWheel);
-
-        for (int i=0;i<m_vehicle->getNumWheels();i++)
+		for (int i=0;i<m_vehicle->getNumWheels();i++)
 		{
 			btWheelInfo& wheel = m_vehicle->getWheelInfo(i);
 			wheel.m_suspensionStiffness = suspensionStiffness;
@@ -934,6 +1221,15 @@ void game::clientResetScene()
 
 
 
+
+
+
+
+
+
+
+
+
 btRigidBody* game::CreateRigidBody(float mass, const btTransform& startTransform,btCollisionShape* shape)
 {
     btAssert((!shape || shape->getShapeType() != INVALID_SHAPE_PROXYTYPE));
@@ -947,8 +1243,7 @@ btRigidBody* game::CreateRigidBody(float mass, const btTransform& startTransform
 
 	//using motionstate is recommended, it provides interpolation capabilities, and only synchronizes 'active' objects
 
-#define USE_MOTIONSTATE 1
-#ifdef USE_MOTIONSTATE
+
 	btDefaultMotionState* myMotionState = new btDefaultMotionState(startTransform);
 
 	btRigidBody::btRigidBodyConstructionInfo cInfo(mass,myMotionState,shape,localInertia);
@@ -956,16 +1251,39 @@ btRigidBody* game::CreateRigidBody(float mass, const btTransform& startTransform
 	btRigidBody* body = new btRigidBody(cInfo);
 	body->setContactProcessingThreshold(m_defaultContactProcessingThreshold);
 
-#else
-	btRigidBody* body = new btRigidBody(mass,0,shape,localInertia);
-	body->setWorldTransform(startTransform);
-#endif//
 
 	world->addRigidBody(body);
-
+    bodies.push_back(new bulletObject(body,0,1.0,0.0,0.0));
+    body->setUserPointer(bodies[bodies.size()-1]);
 	return body;
 
 
+
+
+/*
+    btScalar mass(0.);
+
+    //rigidbody is dynamic if and only if mass is non zero, otherwise static
+    bool isDynamic = (mass != 0.f);
+
+    btVector3 localInertia(0,0,0);
+    if (isDynamic)
+        groundShape->calculateLocalInertia(mass,localInertia);
+
+    //using motionstate is recommended, it provides interpolation capabilities, and only synchronizes 'active' objects
+    btDefaultMotionState* myMotionState = new btDefaultMotionState(groundTransform);
+    btRigidBody::btRigidBodyConstructionInfo rbInfo(mass,myMotionState,Shape,localInertia);
+    btRigidBody* body = new btRigidBody(rbInfo);
+
+
+    // this is where you add the actual body
+    //add the body to the dynamics world
+
+	world->addRigidBody(body);
+
+    return body;
+
+*/
 }
 
 
@@ -1073,7 +1391,9 @@ void game::show()
         else if(bodies[i]->body->getCollisionShape()->getShapeType()==SPHERE_SHAPE_PROXYTYPE)
                 renderSphere(bodies[i]);
         else if(bodies[i]->body->getCollisionShape()->getShapeType()==CYLINDER_SHAPE_PROXYTYPE)
-                renderCylinder(bodies[i]);
+                renderCappedCylinder(bodies[i]);
+                // renderCylinder(bodies[i]);
+
         else if(bodies[i]->body->getCollisionShape()->getShapeType()==CONE_SHAPE_PROXYTYPE)
                 renderCone(bodies[i]);
 
@@ -1084,10 +1404,28 @@ void game::show()
             else
                 renderBox(bodies[i]);
         }
+        else if(bodies[i]->body->getCollisionShape()->getShapeType()==COMPOUND_SHAPE_PROXYTYPE)
+            renderCompound(bodies[i]);
+
 	}
 
     for(int i=0; i<world->getSoftBodyArray().size(); i++)
         renderSoftbody(world->getSoftBodyArray()[i]);
+
+
+    btScalar m[16];
+
+    btVector3 wheelColor(1,0,0);
+	for (int i=0;i<m_vehicle->getNumWheels();i++)
+	{
+		//synchronize the wheels with the (interpolated) chassis worldtransform
+		m_vehicle->updateWheelTransform(i,true);
+		//draw wheels (cylinders)
+		m_vehicle->getWheelInfo(i).m_worldTransform.getOpenGLMatrix(m);
+
+		renderWheel(m, m_wheelShape);
+	//	m_shapeDrawer->drawOpenGL(m,m_wheelShape,wheelColor,getDebugMode(),worldBoundsMin,worldBoundsMax);
+	}
 
 
 

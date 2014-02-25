@@ -139,7 +139,7 @@ class game
 
         btRigidBody* CreateRigidBody(float mass, const btTransform& startTransform,btCollisionShape* shape);
 
-        void Create_Vehicle();
+        void init_Vehicle();
 
         void clientResetScene();
 
